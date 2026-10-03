@@ -1,0 +1,38 @@
+﻿check,event_id,finding,severity,action
+time_precision_consistency,E026,"date_lunar='1793-02-early', time_precision='day'",MEDIUM,YEAR_MONTH로 재분류; 임의의 일(day)을 부여하지 않음
+time_precision_consistency,E027,"date_lunar='1793-02-early', time_precision='day'",MEDIUM,YEAR_MONTH로 재분류; 임의의 일(day)을 부여하지 않음
+time_precision_consistency,E030,"date_lunar='1793-02-late', time_precision='day'",MEDIUM,YEAR_MONTH로 재분류; 임의의 일(day)을 부여하지 않음
+time_precision_consistency,E038,"date_lunar='1793-03', time_precision='day'",MEDIUM,YEAR_MONTH로 재분류; 임의의 일(day)을 부여하지 않음
+time_precision_consistency,E039,"date_lunar='1793-03', time_precision='day'",MEDIUM,YEAR_MONTH로 재분류; 임의의 일(day)을 부여하지 않음
+time_precision_consistency,E040,"date_lunar='1793-03', time_precision='day'",MEDIUM,YEAR_MONTH로 재분류; 임의의 일(day)을 부여하지 않음
+time_precision_consistency,E041,"date_lunar='1793-03', time_precision='day'",MEDIUM,YEAR_MONTH로 재분류; 임의의 일(day)을 부여하지 않음
+time_precision_consistency,E042,"date_lunar='1793-03', time_precision='day'",MEDIUM,YEAR_MONTH로 재분류; 임의의 일(day)을 부여하지 않음
+time_precision_consistency,E043,"date_lunar='1793-03', time_precision='day'",MEDIUM,YEAR_MONTH로 재분류; 임의의 일(day)을 부여하지 않음
+time_precision_consistency,E044,"date_lunar='1793-03', time_precision='day'",MEDIUM,YEAR_MONTH로 재분류; 임의의 일(day)을 부여하지 않음
+time_precision_consistency,E045,"date_lunar='1793-03', time_precision='day'",MEDIUM,YEAR_MONTH로 재분류; 임의의 일(day)을 부여하지 않음
+time_precision_consistency,E046,"date_lunar='1793-03', time_precision='day'",MEDIUM,YEAR_MONTH로 재분류; 임의의 일(day)을 부여하지 않음
+time_precision_consistency,E047,"date_lunar='1793-03', time_precision='day'",MEDIUM,YEAR_MONTH로 재분류; 임의의 일(day)을 부여하지 않음
+time_precision_consistency,E048,"date_lunar='1793-03', time_precision='day'",MEDIUM,YEAR_MONTH로 재분류; 임의의 일(day)을 부여하지 않음
+time_precision_consistency,E049,"date_lunar='1793-03', time_precision='day'",MEDIUM,YEAR_MONTH로 재분류; 임의의 일(day)을 부여하지 않음
+time_precision_consistency,E070,"date_lunar='1793-03', time_precision='day'",MEDIUM,YEAR_MONTH로 재분류; 임의의 일(day)을 부여하지 않음
+time_precision_consistency,E071,"date_lunar='1793-03', time_precision='day'",MEDIUM,YEAR_MONTH로 재분류; 임의의 일(day)을 부여하지 않음
+time_precision_consistency,E072,"date_lunar='1793-03', time_precision='day'",MEDIUM,YEAR_MONTH로 재분류; 임의의 일(day)을 부여하지 않음
+time_precision_consistency,E073,"date_lunar='1793-03', time_precision='day'",MEDIUM,YEAR_MONTH로 재분류; 임의의 일(day)을 부여하지 않음
+time_precision_consistency,E074,"date_lunar='1793-03', time_precision='day'",MEDIUM,YEAR_MONTH로 재분류; 임의의 일(day)을 부여하지 않음
+time_precision_consistency,E075,"date_lunar='1793-03', time_precision='day'",MEDIUM,YEAR_MONTH로 재분류; 임의의 일(day)을 부여하지 않음
+event_id_sequence_gaps,E078,E 계열 id 결락: 1개,INFO,결락 행의 내용은 알 수 없음 — 생성하지 않음
+event_id_sequence_gaps,I001,I 계열 id 결락: 1개,INFO,결락 행의 내용은 알 수 없음 — 생성하지 않음
+event_id_sequence_gaps,"C008,C009,C011",C 계열 id 결락: 3개,INFO,결락 행의 내용은 알 수 없음 — 생성하지 않음
+referenced_but_absent_evidence,I002;E001,identity_link_basis가 '1782 royal dialogue'로 부자관계(구세덕-구순)를 근거한다고 하나 해당 1782 행이 CSV에 없음,HIGH,KINSHIP edge는 CSV 역할필드(father_of_candidate_gu)에 근거해 유지하되 confidence를 낮추고 플래그
+referenced_but_absent_evidence,E029;E079,identity_link_basis가 '1795 長淵 transfer'를 언급하나 해당 이배 행이 없음 (E078 결락),HIGH,백령도→장연현 연결을 HIGH_CONFIDENCE(미확정)로 둠; E079 시작일 1795-10-15는 CSV 단언값으로만 보존
+referenced_but_absent_evidence,I004,백령첨사 임명 행 자체는 없음; 1781-12 국왕 발언(I004)만 존재,MEDIUM,백령첨사 재임 시작은 ≤1781-12로만 표현
+temporal_tension,E003;E004,1778-12-24 중화부사 임명(E003) 후 1779-08-10 별군직으로 왕 행행 수행(E004); 중화부사 체직 기록 없음,MEDIUM,모순으로 처리하지 않음; identity_evidence에 TENSION으로 기록
+temporal_tension,E025;E026;E027,E025 gap의 종료값(1793-02-21)이 '1793-02-early' 기록(E026/E027)의 가능 구간과 겹침,LOW,해배 상한은 날짜가 확정된 최초 자유 신분 관측 E028(1793-02-22)로 둠
+legacy_level_field,ALL,"subject/object_level_current(0–5)는 품계가 아니라 CSV 작성자의 서열 코드이며, 구순의 경우 현직=3, 죄인·전직=1로 관직과 처벌 상태를 섞음",HIGH,"csv_legacy_level로만 보존, rank_level 계산에 사용하지 않음"
+official_rank_absent,ALL,CSV에 품계(정3품 등) 필드가 없음; E002만 '당상관'(일기 전언),HIGH,official_rank·rank_level은 NA (E002 행의 '당상관(일기 전언)'만 원문 보존)
+relation_type_cardinality,ALL,원문 relation_type 78종 (사건 서술형 동사),INFO,17종 vocabulary로 정규화하고 원문은 relation_subtype으로 보존
+record_vs_event_date,E060–E069,1793-06-13 최종 안핵 행들은 '기록·판정 일자'이며 서술된 행위(편들기·편파수사 등)의 발생일이 아님,MEDIUM,edge에 record_date와 관계 발생 구간(earliest/latest)을 분리
+missing_source_url,E018,phase=gap; source_stage=research_gap,INFO,연구 공백(STATE_GAP) 행 — 사료 행이 아님
+missing_source_url,E025,phase=gap; source_stage=research_gap,INFO,연구 공백(STATE_GAP) 행 — 사료 행이 아님
+missing_source_url,E079,phase=gap; source_stage=research_gap,INFO,연구 공백(STATE_GAP) 행 — 사료 행이 아님
+missing_source_url,E083,phase=gap; source_stage=research_gap,INFO,연구 공백(STATE_GAP) 행 — 사료 행이 아님

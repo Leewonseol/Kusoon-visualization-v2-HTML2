@@ -1,0 +1,19 @@
+﻿spell_id,person_id,career_state,office_or_status,location,start,start_precision,earliest_end,latest_end,end_precision,evidence_start,evidence_end,notes,evidence_status,is_office_level
+S01,GUSUN_PRE1793,ACTIVE,선전관→별군직,한성,1777-09-11,EXACT_DAY,1778-07-04,1778-12-24,RANGE,E001,E002;E003,"별군직 차하(E001); 선전관 표기(E002, 일기); 다음 관측은 중화부사 임명(E003)",DERIVED (CSV event 경계에서 구성),False
+S02,GUSUN_PRE1793,ACTIVE,중화부사,중화부,1778-12-24,EXACT_DAY,1778-12-24,1779-08-10,RANGE,E003,E004,임명일만 관측. 체직 기록 없음; 1779-08-10 별군직 수행(E004) — 겸직/체직 여부 UNRESOLVED,DERIVED (CSV event 경계에서 구성),False
+S03,GUSUN_PRE1793,ACTIVE,별군직,왕 행행 수행,1779-08-10,EXACT_DAY,1779-08-10,1779-12-25,RANGE,E004,E005,단일 관측점,DERIVED (CSV event 경계에서 구성),False
+S04,GUSUN_PRE1793,ACTIVE,벽동군수,벽동군,1779-12-25,EXACT_DAY,1779-12-25,1781-12-30,RANGE,E005,I004,"임명일만 관측; 다음 관측은 백령첨사(I004, 월 단위)",DERIVED (CSV event 경계에서 구성),False
+S05,GUSUN_PRE1793,ACTIVE,백령첨사,백령,UNKNOWN,BEFORE,1781-12-01,1782-12-29,RANGE,I004,E006,임명 행 없음; 1781-12 국왕 발언에서 재임 확인 → 시작 ≤1781-12,DERIVED (CSV event 경계에서 구성),False
+S06,GUSUN_PRE1793,ACTIVE,영흥부사,영흥부,1782-12-29,EXACT_DAY,1784-03-17,1784-03-18,RANGE,E006,E011,1784-03-17 상관 갈등 → 03-18 나문 명령,DERIVED (CSV event 경계에서 구성),False
+S07,GUSUN_PRE1793,UNDER_INVESTIGATION,영흥부사(재임 중),영흥부,1784-03-18,EXACT_DAY,1784-07-16,1784-07-16,EXACT_DAY,E011,E016,나문 명령(E011)→나처 연기(E015)→분간·포상(E016). 재임 유지(career_state≠관직 level),DERIVED (CSV event 경계에서 구성),False
+S08,GUSUN_PRE1793,ACTIVE,영흥부사,영흥부,1784-07-16,EXACT_DAY,1784-07-16,1784-09-23,RANGE,E016,E017,포상 후; 별군직 복귀 시점 미상,DERIVED (CSV event 경계에서 구성),False
+S09,GUSUN_PRE1793,EXILED,NA (별군직에서 정배),배소 미상,1784-09-23,EXACT_DAY,1784-09-23,1787-01-03,RANGE,E017,E018;E019,정배 명령일만 관측. 해배 미관측(E018 gap) → 1787-01-03 이전에 종료,DERIVED (CSV event 경계에서 구성),False
+S10,GUSUN_PRE1793,ACTIVE,별군직,한성,UNKNOWN,BEFORE,1787-01-03,1787-01-03,EXACT_DAY,E019,E023,복귀 시점 미상 (≤1787-01-03),DERIVED (CSV event 경계에서 구성),False
+S11,GUSUN_PRE1793,EXILED,NA,제주목,1787-01-03,EXACT_DAY,1787-01-03,1793-02-22,RANGE,E023,E028,決棍三十度·濟州牧減死定配·勿揀赦典. 해배 미관측(E025). 종료 상한은 동일인 가정(HIGH_CONFIDENCE) 하에서만 의미,DERIVED (CSV event 경계에서 구성),False
+S12,GUSUN_1793PLUS,FORMER_OFFICIAL,전 부사(府名 미상),청주 덕평,UNKNOWN,BEFORE,1793-02-01,1793-05-12,RANGE,E026,E050,'본래 친숙'(E026) — 덕평 거주 시작 미상. 1793-02 최초 관측,DERIVED (CSV event 경계에서 구성),False
+S13,GUSUN_1793PLUS,UNDER_INVESTIGATION,전 부사(府名 미상),청주 덕평/충청도,UNKNOWN,BEFORE,1793-05-12,1793-05-12,EXACT_DAY,E050,E055,관찰사 공동조사(일자 미상) → 05-12 장계,DERIVED (CSV event 경계에서 구성),False
+S14,GUSUN_1793PLUS,IMPRISONED,전 부사(府名 미상),의금부(한성),1793-05-12,EXACT_DAY,1793-06-13,1793-06-13,EXACT_DAY,E055;E056;E059,E066,"05-12 수금 명령(실제 체포일 미상, ≤05-27 의금부 피수사자)",DERIVED (CSV event 경계에서 구성),False
+S15,GUSUN_1793PLUS,EXILED,NA,신지도,1793-06-13,EXACT_DAY,1794-10-15,1794-10-15,EXACT_DAY,E066,E076,감사 절도정배,DERIVED (CSV event 경계에서 구성),False
+S16,GUSUN_1793PLUS,EXILED,NA,백령도,1794-10-15,EXACT_DAY,1794-10-15,1798-02-21,RANGE,E076,E079;E080,장연현 이배 행 없음(E078 결락). CSV E079는 1795-10-15를 장연 정배 시점으로 단언,DERIVED (CSV event 경계에서 구성),False
+S17,GUSUN_1793PLUS,EXILED,NA,장연현,UNKNOWN,BEFORE,1798-02-21,1798-02-21,EXACT_DAY,E079,E082,시작 ≤1795-10-15(CSV 단언) / 확실한 상한 ≤1798-02-21; '도 3년'으로 재분류 경위 미상,DERIVED (CSV event 경계에서 구성),False
+S18,GUSUN_1793PLUS,RELEASED,NA,장연현→미상,1798-02-21,EXACT_DAY,UNKNOWN,UNKNOWN,UNKNOWN,E082,E083,방송 윤허. 이후 행적 OPEN (E083),DERIVED (CSV event 경계에서 구성),False

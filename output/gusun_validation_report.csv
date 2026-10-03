@@ -1,0 +1,10 @@
+﻿check_no,check,result,detail
+1,event_start > event_end 없음,PASS,events 102행·edges 97행 검사
+2,earliest_possible > latest_possible 없음 (events·edges·uncertainty·career),PASS,모든 하한 ≤ 상한
+3,edge가 존재하지 않는 person_id를 참조하지 않음,PASS,41 persons
+4,event_id·edge_id 중복 없음,PASS,"dup events [], edges []"
+5,relation_type ∈ 정의된 vocabulary,PASS,"사용된 유형 ['ACCUSATION', 'COMMAND', 'CONFLICT', 'DETENTION', 'FRIENDLY_ASSOCIATION', 'HOUSEHOLD', 'INVESTIGATION', 'KINSHIP', 'NEIGHBOR', 'OFFICIAL_COLLEAGUE', 'OFFICIAL_SUBORDINATE', 'OFFICIAL_SUPERIOR', 'OTHER', 'PUNISHMENT', 'REEXAMINATION', 'REPORT', 'TESTIMONY']"
+6,UNKNOWN 날짜를 실제 날짜처럼 계산에 사용하지 않음; 월 단위에 일 생성 없음,PASS,UNKNOWN→plot_x=NaN; 월 단위 event_start는 YYYY-MM 유지
+7,EXILED/DISMISSED/IMPRISONED을 관직 level로 오인하지 않음,PASS,rank_level 전부 NA(품계 부재); 처벌 상태는 career_state에만 존재; 관직 lane에 상태 없음
+8,원본 CSV에 없는 정보를 생성하지 않음 (인물·사건 id·파생 edge 근거문·관직명),PASS,persons 41 ⊂ CSV ids; edges 97 모두 CSV event_id 참조; 파생 edge 18개 근거문 확인
+9,source_url 실제 접속 시도 없음,PASS,런타임 소켓 연결 시도 0건 (socket guard); 정적 검사 위반 없음; 패턴 정의 줄이라 제외한 매치 9건; socket import 위치 ['run_all.py:5'] (연결 차단 가드 용도)

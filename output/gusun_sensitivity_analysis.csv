@@ -1,0 +1,5 @@
+﻿analysis,scenario,scenario_definition,n_paths,shortest
+time-respecting paths GUSUN_1793PLUS→김명신,EARLY,월 단위·구간 edge를 하한(earliest)에 배치,2,GUSUN_1793PLUS → P_KIM_MYEONGSIN
+time-respecting paths GUSUN_1793PLUS→김명신,LATE,월 단위·구간 edge를 상한(latest)에 배치,3,GUSUN_1793PLUS → P_KIM_MYEONGSIN
+"1793-03 월 단위 사건(E038,E039 등) vs E035(03-04) 순서",BOUNDS,"[1793-03-01, 1793-03-30] vs 1793-03-04",NA,03-04 이전/이후 모두 가능 → 'E038→E039→체포명령' 인과 순서는 UNRESOLVED
+T_release_1787 interval,BOUNDS,"(1787-01-03, 1793-02-22)",NA,연도별 확률 미산출. 어떤 해배 시점을 택해도 L00 판정(HIGH_CONFIDENCE)은 변하지 않음 — 판정은 해배 시점이 아니라 해배 '기록'의 존재에 달려 있음
