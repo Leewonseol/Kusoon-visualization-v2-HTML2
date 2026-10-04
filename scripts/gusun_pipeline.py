@@ -1018,22 +1018,27 @@ def build_identity(df: pd.DataFrame):
                                 evidence_status="OBSERVED" if kind in ("SUPPORT", "WEAK_SUPPORT",
                                                                       "TENSION", "CONTRADICT")
                                 else "OBSERVED_ABSENCE_IN_CSV"))
+        # contradicting(실제 반대 증거) · tension(풀리지 않은 긴장) · missing(결락)을 엄격히 분리.
+        # 해배 기록의 부재는 반대 증거가 아니라 missing transition evidence다.
         sup = [f"{c}[{e}]" for c, k, e, _ in items if k in ("SUPPORT", "WEAK_SUPPORT")]
-        con = [f"{c}[{e}]" for c, k, e, _ in items if k in ("CONTRADICT", "TENSION")]
+        con = [f"{c}[{e}]" for c, k, e, _ in items if k == "CONTRADICT"]
+        ten = [f"{c}[{e}]" for c, k, e, _ in items if k == "TENSION"]
         mis = [f"{c}[{e}]" for c, k, e, _ in items if k == "MISSING"]
         a_ev = GUSUN_RECORD_CLUSTERS[a][0]
         b_ev = GUSUN_RECORD_CLUSTERS[b][0]
         link_rows.append(dict(
             link_id=lid, identity_a=a, identity_b=b, link_level="RECORD_CLUSTER",
             same_person_status=status,
-            supporting_evidence_count=len(sup), contradicting_or_tension_count=len(con),
-            hard_contradiction_count=sum(1 for _, k, _, _ in items if k == "CONTRADICT"),
+            supporting_evidence_count=len(sup), contradicting_evidence_count=len(con),
+            tension_evidence_count=len(ten), missing_evidence_count=len(mis),
             supporting_evidence="; ".join(sup), contradicting_evidence="; ".join(con) or "NONE_IN_CSV",
+            tension_evidence="; ".join(ten) or "NONE",
             missing_evidence="; ".join(mis) or "NONE",
             confidence_class=status, csv_compiler_assessment=f"{a_ev}:{nz(csv_assess.get(a_ev))} / "
                                                             f"{b_ev}:{nz(csv_assess.get(b_ev))}",
             decision_rule="CONFIRMED=explicit cross-reference; HIGH=same hanja+chronology+specific cue; "
-                          "PLAUSIBLE=same hanja+generic cue; tension은 강등하지 않고 기록",
+                          "PLAUSIBLE=same hanja+generic cue; CONTRADICTED=contradicting evidence 1건 이상; "
+                          "tension·missing은 판정을 강등하지 않고 별도 컬럼에 기록",
             evidence_status="DERIVED (rule over CSV evidence items)"))
     links = pd.DataFrame(link_rows)
     top = links[links.link_id == "L08"].iloc[0].to_dict()
@@ -1043,7 +1048,8 @@ def build_identity(df: pd.DataFrame):
     alias_rows = [
         dict(link_id="A01", identity_a="P_KIM_MYEONGSIN", identity_b="alias:풍각 김생원 (E035)",
              link_level="ALIAS", same_person_status="HIGH_CONFIDENCE",
-             supporting_evidence_count=1, contradicting_or_tension_count=0, hard_contradiction_count=0,
+             supporting_evidence_count=1, contradicting_evidence_count=0, tension_evidence_count=0,
+             missing_evidence_count=1, tension_evidence="NONE",
              supporting_evidence="CSV 요약이 '풍각 김생원(김명신)'으로 괄호 동일시[E035]",
              contradicting_evidence="NONE_IN_CSV", missing_evidence="원문 대조 불가(외부 접근 금지)",
              confidence_class="HIGH_CONFIDENCE", csv_compiler_assessment="CSV parenthetical",
@@ -1051,14 +1057,16 @@ def build_identity(df: pd.DataFrame):
              evidence_status="OBSERVED (CSV mapping)"),
         dict(link_id="A02", identity_a="P_KIM_MYEONGSIN", identity_b="alias:풍각 김상제 (E038)",
              link_level="ALIAS", same_person_status="HIGH_CONFIDENCE",
-             supporting_evidence_count=1, contradicting_or_tension_count=0, hard_contradiction_count=0,
+             supporting_evidence_count=1, contradicting_evidence_count=0, tension_evidence_count=0,
+             missing_evidence_count=1, tension_evidence="NONE",
              supporting_evidence="CSV 요약 '풍각 김상제(김명신)'[E038]; 지명 '풍각' 일치",
              contradicting_evidence="NONE_IN_CSV", missing_evidence="원문 대조 불가",
              confidence_class="HIGH_CONFIDENCE", csv_compiler_assessment="CSV parenthetical",
              decision_rule="CSV 작성자 매핑", evidence_status="OBSERVED (CSV mapping)"),
         dict(link_id="A03", identity_a="P_LEE_GWANGSEOP", identity_b="role:'병사' (E035, E037)",
              link_level="ROLE_REFERENCE", same_person_status="HIGH_CONFIDENCE",
-             supporting_evidence_count=1, contradicting_or_tension_count=0, hard_contradiction_count=0,
+             supporting_evidence_count=1, contradicting_evidence_count=0, tension_evidence_count=0,
+             missing_evidence_count=0, tension_evidence="NONE",
              supporting_evidence="E035 subject=이광섭, 요약은 '병사가 … 명한 것'; E053 이광섭=충청도 병마절도사",
              contradicting_evidence="NONE_IN_CSV", missing_evidence="NONE",
              confidence_class="HIGH_CONFIDENCE", csv_compiler_assessment="CSV mapping",

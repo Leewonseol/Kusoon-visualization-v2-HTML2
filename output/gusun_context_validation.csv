@@ -1,0 +1,18 @@
+﻿check_no,layer,check,result,detail
+1,OFFICE_LOOKUP,FIXED인데 rank_numeric이 없는 행,PASS,lookup FIXED 12행 모두 값 있음
+2,OFFICE_LOOKUP,VARIABLE/비고정인데 rank_numeric이 들어간 행,PASS,"비고정 lookup 16행 (FORMER_OFFICE, NO_SINGLE_STATUTORY_RANK, UNRANKED_CLERICAL, VARIABLE) 모두 빈 값"
+3,OFFICE_LOOKUP,FORMER_OFFICIAL인데 현재 rank_numeric이 들어간 행,PASS,FORMER_OFFICIAL 행 14개 모두 rank_numeric 비움 (former_statutory_rank만 보존)
+4,OFFICE_LOOKUP,unmatched office status (보고 항목),REPORTED,"고유값 48개 / 출현 113회; 성격 {'RULER_OR_INSTITUTION': 46, 'NON_OFFICE_PERSON_OR_HOUSEHOLD': 33, 'PENAL_OR_CAREER_STATE': 17, 'POLICY_EVENT_OR_LIST': 12, 'POSSIBLE_OFFICE_NOT_IN_LOOKUP': 5}; lookup 추가 후보(직함처럼 보이나 키 없음): ['별군직 청수 관련', '병영·진영 실무자', '영흥부 아전', '중영 하급 실무자', '체포 장교']"
+5,OFFICE_LOOKUP,join 후 temporal network 원본 행 수 불변,PASS,"원본 102행 → 결합 102행, event_id 순서 동일=True"
+6,POLICY,sort_key와 year-month-day(·date_lunar) 순서 일치,PASS,"24행 모두 sort_key=YYYYMMDD=date_lunar, 정렬 순서 동일"
+7,POLICY,동일 policy_event_id 중복,PASS,없음
+8,POLICY,EXACT_DAY인데 month/day 없음,PASS,EXACT_DAY 24행 모두 월·일 있음
+9,POLICY,broad_domain vocabulary,PASS,"6개 vocabulary 내: ECONOMY_COMMERCE, LEGAL_JUSTICE, LOCAL_ADMIN_URBAN, MILITARY_DEFENSE, POLITICS_PERSONNEL, SOCIAL_STATUS_PERSONNEL"
+10,POLICY,policy episode 내 날짜 역전 (policy_event_id 순서 기준),PASS,11개 episode 모두 id 순서=날짜 순서
+11,POLICY,source_url 존재하되 실제 접속하지 않음,PASS,source_url 24/24행 존재; 런타임 소켓 연결 시도 0건
+12,TEMPORAL,event_start > event_end 없음,PASS,events 102행·edges 97행 검사
+13,TEMPORAL,earliest_possible > latest_possible 없음 (events·edges·uncertainty·career),PASS,모든 하한 ≤ 상한
+14,TEMPORAL,edge가 존재하지 않는 person_id를 참조하지 않음,PASS,41 persons
+15,TEMPORAL,UNKNOWN 날짜를 실제 날짜처럼 계산에 사용하지 않음; 월 단위에 일 생성 없음,PASS,UNKNOWN→plot_x=NaN; 월 단위 event_start는 YYYY-MM 유지
+16,NETWORK,정책을 사람 node로 잘못 넣지 않음,PASS,정책 id 35개·master POL_* 노드 모두 persons/edges에 없음
+17,NETWORK,정책–인물 인과 edge를 임의 생성하지 않음,PASS,정책 행·master 맥락(C) 행에서 파생된 edge 0개; 정책과는 동시성 표(window)만 존재

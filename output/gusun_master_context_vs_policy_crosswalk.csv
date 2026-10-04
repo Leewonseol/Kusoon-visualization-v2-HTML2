@@ -1,0 +1,15 @@
+﻿master_event_id,master_date,master_object,policy_event_id,policy_title,match_basis,action
+C001,1778-01-12,흠휼전칙,JP004,『흠휼전칙』 성립,SAME_DATE_LUNAR,대응만 기록; 두 행을 병합하지 않음. 대시보드 정책 layer는 정책 CSV만 사용
+C002,1778-10-23,백골·황구 징포 금지 강화,NA,NA,NO_SAME_DATE_POLICY_ROW,대응만 기록; 두 행을 병합하지 않음. 대시보드 정책 layer는 정책 CSV만 사용
+C003,1780-03-20,청,NA,NA,NO_SAME_DATE_POLICY_ROW,대응만 기록; 두 행을 병합하지 않음. 대시보드 정책 layer는 정책 CSV만 사용
+C004,1781-12-08,초계문신제,NA,NA,NO_SAME_DATE_POLICY_ROW,대응만 기록; 두 행을 병합하지 않음. 대시보드 정책 layer는 정책 CSV만 사용
+C005,1785-09-11,대전통편,JP013,『대전통편』 완성·반포,SAME_DATE_LUNAR,대응만 기록; 두 행을 병합하지 않음. 대시보드 정책 layer는 정책 CSV만 사용
+C006,1785-09-11,병학통,JP013,『대전통편』 완성·반포,SAME_DATE_LUNAR,대응만 기록; 두 행을 병합하지 않음. 대시보드 정책 layer는 정책 CSV만 사용
+C007,1787-02-22,재향 조관 신추 규식,NA,NA,NO_SAME_DATE_POLICY_ROW,대응만 기록; 두 행을 병합하지 않음. 대시보드 정책 layer는 정책 CSV만 사용
+C010,1790-06-27,청,NA,NA,NO_SAME_DATE_POLICY_ROW,대응만 기록; 두 행을 병합하지 않음. 대시보드 정책 layer는 정책 CSV만 사용
+C012,1793-01-12,화성 유수부·장용외영 체제,JP020,화성 유수·장용외사 체계 정비,SAME_DATE_LUNAR,대응만 기록; 두 행을 병합하지 않음. 대시보드 정책 layer는 정책 CSV만 사용
+C013,1794-05-22,화성 성역,NA,NA,NO_SAME_DATE_POLICY_ROW,대응만 기록; 두 행을 병합하지 않음. 대시보드 정책 layer는 정책 CSV만 사용
+C014,1794-06-28,무원록언해,NA,NA,NO_SAME_DATE_POLICY_ROW,대응만 기록; 두 행을 병합하지 않음. 대시보드 정책 layer는 정책 CSV만 사용
+C015,1796-03-12,청,NA,NA,NO_SAME_DATE_POLICY_ROW,대응만 기록; 두 행을 병합하지 않음. 대시보드 정책 layer는 정책 CSV만 사용
+C016,1796-08-19,화성 성곽 완성,JP022,수원부 성 완성,SAME_DATE_LUNAR,대응만 기록; 두 행을 병합하지 않음. 대시보드 정책 layer는 정책 CSV만 사용
+C017,1796-11-09,화성성역의궤,NA,NA,NO_SAME_DATE_POLICY_ROW,대응만 기록; 두 행을 병합하지 않음. 대시보드 정책 layer는 정책 CSV만 사용

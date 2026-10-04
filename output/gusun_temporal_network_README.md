@@ -259,22 +259,22 @@ CSV 날짜(도난 02-22 ~ 장계 05-12)로 묶었다.
 CSV 작성자의 평가(`identity_bridge_status` = `highly_probable_not_fully_proven`)와 일치한다. 두 세그먼트는 **병합하지 않았다** —
 `persons`·`edges`·시각화 모두에서 별도 노드이며 주황 점선 링크로만 연결된다. 전체 링크:
 
-| link_id | identity_a | identity_b | same_person_status | supporting_evidence_count | contradicting_or_tension_count |
-|---|---|---|---|---|---|
-| L00 | GUSUN_PRE1793 | GUSUN_1793PLUS | HIGH_CONFIDENCE | 4 | 1 |
-| L01 | R2_JUNGHWA_BUSA_1778 | R4_BAENGNYEONG_CHEOMSA_1781 | CONFIRMED | 2 | 0 |
-| L02 | R1_SEONJEON_BYEOLGUN_1777_1779 | R2_JUNGHWA_BUSA_1778 | PLAUSIBLE | 2 | 1 |
-| L03 | R2_JUNGHWA_BUSA_1778 | R3_BYEOKDONG_GUNSU_1779 | PLAUSIBLE | 3 | 0 |
-| L04 | R4_BAENGNYEONG_CHEOMSA_1781 | R5_YEONGHEUNG_BUSA_1782_1784 | PLAUSIBLE | 3 | 0 |
-| L05 | R5_YEONGHEUNG_BUSA_1782_1784 | R6_BYEOLGUN_EXILE_1784 | PLAUSIBLE | 2 | 1 |
-| L06 | R1_SEONJEON_BYEOLGUN_1777_1779 | R6_BYEOLGUN_EXILE_1784 | HIGH_CONFIDENCE | 3 | 0 |
-| L07 | R6_BYEOLGUN_EXILE_1784 | R7_BYEOLGUN_JEJU_EXILE_1787 | HIGH_CONFIDENCE | 4 | 0 |
-| L08 | R7_BYEOLGUN_JEJU_EXILE_1787 | R8A_FORMER_BUSA_KIM_CASE_1793 | HIGH_CONFIDENCE | 4 | 1 |
-| L09 | R8A_FORMER_BUSA_KIM_CASE_1793 | R8B_SINJIDO_TO_BAENGNYEONG_1794 | CONFIRMED | 3 | 0 |
-| L10 | R8B_SINJIDO_TO_BAENGNYEONG_1794 | R8C_JANGYEON_RELEASE_1795_1798 | HIGH_CONFIDENCE | 3 | 1 |
-| A01 | P_KIM_MYEONGSIN | alias:풍각 김생원 (E035) | HIGH_CONFIDENCE | 1 | 0 |
-| A02 | P_KIM_MYEONGSIN | alias:풍각 김상제 (E038) | HIGH_CONFIDENCE | 1 | 0 |
-| A03 | P_LEE_GWANGSEOP | role:'병사' (E035, E037) | HIGH_CONFIDENCE | 1 | 0 |
+| link_id | identity_a | identity_b | same_person_status | supporting_evidence_count | contradicting_evidence_count | tension_evidence_count | missing_evidence_count |
+|---|---|---|---|---|---|---|---|
+| L00 | GUSUN_PRE1793 | GUSUN_1793PLUS | HIGH_CONFIDENCE | 4 | 0 | 1 | 3 |
+| L01 | R2_JUNGHWA_BUSA_1778 | R4_BAENGNYEONG_CHEOMSA_1781 | CONFIRMED | 2 | 0 | 0 | 0 |
+| L02 | R1_SEONJEON_BYEOLGUN_1777_1779 | R2_JUNGHWA_BUSA_1778 | PLAUSIBLE | 2 | 0 | 1 | 0 |
+| L03 | R2_JUNGHWA_BUSA_1778 | R3_BYEOKDONG_GUNSU_1779 | PLAUSIBLE | 3 | 0 | 0 | 0 |
+| L04 | R4_BAENGNYEONG_CHEOMSA_1781 | R5_YEONGHEUNG_BUSA_1782_1784 | PLAUSIBLE | 3 | 0 | 0 | 0 |
+| L05 | R5_YEONGHEUNG_BUSA_1782_1784 | R6_BYEOLGUN_EXILE_1784 | PLAUSIBLE | 2 | 0 | 1 | 0 |
+| L06 | R1_SEONJEON_BYEOLGUN_1777_1779 | R6_BYEOLGUN_EXILE_1784 | HIGH_CONFIDENCE | 3 | 0 | 0 | 0 |
+| L07 | R6_BYEOLGUN_EXILE_1784 | R7_BYEOLGUN_JEJU_EXILE_1787 | HIGH_CONFIDENCE | 4 | 0 | 0 | 1 |
+| L08 | R7_BYEOLGUN_JEJU_EXILE_1787 | R8A_FORMER_BUSA_KIM_CASE_1793 | HIGH_CONFIDENCE | 4 | 0 | 1 | 3 |
+| L09 | R8A_FORMER_BUSA_KIM_CASE_1793 | R8B_SINJIDO_TO_BAENGNYEONG_1794 | CONFIRMED | 3 | 0 | 0 | 0 |
+| L10 | R8B_SINJIDO_TO_BAENGNYEONG_1794 | R8C_JANGYEON_RELEASE_1795_1798 | HIGH_CONFIDENCE | 3 | 0 | 1 | 1 |
+| A01 | P_KIM_MYEONGSIN | alias:풍각 김생원 (E035) | HIGH_CONFIDENCE | 1 | 0 | 0 | 1 |
+| A02 | P_KIM_MYEONGSIN | alias:풍각 김상제 (E038) | HIGH_CONFIDENCE | 1 | 0 | 0 | 1 |
+| A03 | P_LEE_GWANGSEOP | role:'병사' (E035, E037) | HIGH_CONFIDENCE | 1 | 0 | 0 | 0 |
 
 - CONFIRMED는 명시적 상호참조가 있는 두 곳뿐: 중화부사↔백령첨사(I004 국왕 발언), 1793 신지도 정배↔1794 '신지도에서' 백령도 이배(E076).
 - PRE1793 내부도 단일 인물로 확정된 것이 아니다: 1777 별군직↔1778 중화부사, 중화↔벽동, 백령↔영흥, 영흥↔1784 별군직은 PLAUSIBLE이다.
@@ -285,7 +285,8 @@ CSV 작성자의 평가(`identity_bridge_status` = `highly_probable_not_fully_pr
 | 구분 | 증거 |
 |---|---|
 | 지지 | SAME_HANJA_NAME[E019;E026]; FORMER_OFFICE_TITLE_MATCH[E003;E006;E026]; CHRONOLOGICAL_COMPATIBILITY[E023;E028]; NO_COMPETING_SAME_NAME_IN_CSV[ALL] |
-| 긴장(반대 방향) | AMNESTY_EXCLUSION_TENSION[E023;E025] |
+| 반대 증거(contradicting) | NONE_IN_CSV |
+| 긴장(tension, 반증 아님) | AMNESTY_EXCLUSION_TENSION[E023;E025] |
 | 결락 | MISSING_RELEASE_RECORD[E025]; MISSING_RETROSPECTIVE_REFERENCE[R8A]; MISSING_KINSHIP_BRIDGE[D01] |
 
 - 직접 증거(해배 기록, 1793 기록 속 제주 정배·별군직 전력 언급, 1793 세그먼트의 친족 연결)는 **하나도 없다.**
@@ -484,3 +485,208 @@ L00만 CONTRADICTED로 바꾸면 된다.
 | `intermediate/09_office_scope_rule_vs_lookup.csv` | 앞 단계 규칙 scope와 lookup scope 비교 |
 
 기존 산출물(`gusun_temporal_career.html` 등)은 그대로 보존했다.
+
+
+---
+
+## 9. 정조대 정책 context layer와 통합 대시보드 (`jeongjo_policy_timeline.csv`)
+
+> **세 층은 독립된 데이터 layer다.** ① 개인: 구순의 관직·신분·처벌·사건(master CSV) ② 관직의 제도적 위계(office_rank_lookup — 관직 자체의 법정 품계)
+> ③ 국가: 정조대 정책(policy CSV). 같은 시간축 위에 놓아 **시간적 동시성**을 보여줄 뿐, 정책이 구순 사건을 일으켰다는 인과관계는 어디에도 만들지 않았다.
+> 정책은 네트워크 노드가 아니고, 정책–인물 edge는 0개다.
+
+### 9.1 입력 점검 (`gusun_input_audit.csv`)
+
+| file | metric | value |
+|---|---|---|
+| gusun_temporal_network_master_v0_2.csv | row_count | 102 |
+| gusun_temporal_network_master_v0_2.csv | column_names | event_id;event_order;year;date_lunar;date_end_lunar;time_precision;phase;subject_id;subject_name_ko;subject_name_hanja;subject_office_status;subject_level_current;subject_level_peak;subject_role_relative_to_gu;object_id;object_name_ko;object_name_hanja;object_office_status;object_level_current;object_level_peak;object_role_relative_to_gu;level_diff_subject_minus_object;relation_type;relation_layer;location;event_summary;outcome_or_state;claim_status;evidence_grade;identity_confidence_gu;source_stage;source_name;source_url;secondary_source_url;source_support_note;superseded_by_event_id;missingness_flag;modeling_note;record_class;context_domain;context_name;external_actor;context_relevance;gu_identity_segment;identity_bridge_status;identity_link_basis |
+| gusun_temporal_network_master_v0_2.csv | date_range | 1763-01-13 ~ 1798-02-22 (date_lunar, 음력; year 1763–1798) |
+| gusun_temporal_network_master_v0_2.csv | unique_person_count | P_ id 34개 (P_GUSUN 포함; 기관 P_STATE·P_BIBEONSA·P_UIGEUMBU·P_JOSEON·P_QING 포함) / 이름 있는 개인 29명 |
+| gusun_temporal_network_master_v0_2.csv | unique_office_status_values | 76 |
+| gusun_temporal_network_master_v0_2.csv | unique_policy_domains | context_domain(C행) 11종: bureaucratic_governance;criminal_justice;criminal_procedure_elite_officials;foreign_policy;forensic_criminal_procedure;legal_codification;military_administrative_policy;military_governance;military_tax_local_administration;state_capacity_public_works;state_documentation |
+| gusun_temporal_network_master_v0_2.csv | duplicate_rows | 0 |
+| gusun_temporal_network_master_v0_2.csv | duplicate_event_id | 0 |
+| gusun_temporal_network_master_v0_2.csv | missing_critical_fields | event_id=0; date_lunar=0; time_precision=0; subject_id=0; object_id=0; relation_type=0; source_url=4 (source_url 4건은 STATE_GAP 연구공백 행) |
+| office_rank_lookup.csv | row_count | 28 |
+| office_rank_lookup.csv | column_names | raw_office_status;normalized_office_title;office_title_hanja;record_type;administrative_scope;statutory_rank;rank_numeric;rank_fixedness;rank_visualizable;former_statutory_rank;source_title_1;source_url_1;source_title_2;source_url_2;verification_status;notes |
+| office_rank_lookup.csv | date_range | NA (시간 정보 없음) |
+| office_rank_lookup.csv | unique_person_count | NA (인물 없음) |
+| office_rank_lookup.csv | unique_office_status_values | raw_office_status 28 / normalized_office_title 22 |
+| office_rank_lookup.csv | unique_policy_domains | NA (administrative_scope 10종) |
+| office_rank_lookup.csv | duplicate_rows | 0 |
+| office_rank_lookup.csv | duplicate_raw_office_status | 0 |
+| office_rank_lookup.csv | missing_critical_fields | raw_office_status=0; statutory_rank=0; rank_fixedness=0; rank_visualizable=0; verification_status=0; rank_numeric 빈 값 16 (비고정·전직 — 정상) |
+| jeongjo_policy_timeline.csv | row_count | 24 |
+| jeongjo_policy_timeline.csv | column_names | policy_event_id;policy_episode_id;broad_domain;policy_group;policy_title;milestone;year;month;day;date_lunar;sort_key;date_precision;calendar_basis;event_kind;policy_scale;google_ai_claim_status;project_relevance;summary;source_title;source_url;verification_status;notes |
+| jeongjo_policy_timeline.csv | date_range | 17760516 ~ 17961009 (sort_key; 서기 연도+조선 음력 월일) |
+| jeongjo_policy_timeline.csv | unique_person_count | NA (인물 컬럼 없음) |
+| jeongjo_policy_timeline.csv | unique_office_status_values | NA |
+| jeongjo_policy_timeline.csv | unique_policy_domains | 6종: POLITICS_PERSONNEL=7; LOCAL_ADMIN_URBAN=5; SOCIAL_STATUS_PERSONNEL=4; LEGAL_JUSTICE=4; MILITARY_DEFENSE=3; ECONOMY_COMMERCE=1 |
+| jeongjo_policy_timeline.csv | unique_policy_episodes | 11종 |
+| jeongjo_policy_timeline.csv | calendar_basis | JOSEON_LUNAR=22; JOSEON_REGNAL_DATE=2 (JOSEON_REGNAL_DATE 2건도 변환하지 않고 같은 명목 음력 축에 표시) |
+| jeongjo_policy_timeline.csv | duplicate_rows | 0 |
+| jeongjo_policy_timeline.csv | duplicate_policy_event_id | 0 |
+| jeongjo_policy_timeline.csv | missing_critical_fields | policy_event_id=0; policy_episode_id=0; broad_domain=0; policy_title=0; year=0; month=0; day=0; sort_key=0; date_precision=0; project_relevance=0; source_url=0 |
+
+- 원본 세 CSV는 `input/`에 복사만 했고 수정하지 않았다.
+- master CSV의 맥락 행(C001–C017)과 정책 CSV는 **같은 음력 날짜**로만 대응시켰다 (`gusun_master_context_vs_policy_crosswalk.csv`):
+  같은 날짜 5건 / 대응 없음 9건.
+  같은 날짜라도 같은 정책이라는 뜻은 아니다 (예: C006 『병학통』과 JP013 『대전통편』은 둘 다 1785-09-11). 두 행을 병합하지 않았고, 대시보드의 정책 layer는 정책 CSV만 쓴다.
+
+### 9.2 시간축 규칙
+
+- 모든 층이 하나의 **명목 음력 시간축**을 공유한다. 정책 CSV는 서기 연도 + 조선 음력 월·일이고, master CSV도 음력이다. **양력으로 바꾸지 않았다.**
+- 정책은 `sort_key`(YYYYMMDD)로 정렬한다. `year/month/day/date_lunar/sort_key/date_precision/calendar_basis`는 원문 그대로 보존했다.
+  `calendar_basis=JOSEON_REGNAL_DATE` 2건(JP023, JP024)도 변환하지 않고 같은 축에 둔다.
+- 날짜 정밀도는 `YYYY` / `YYYY-MM` / `YYYY-MM-DD` 그대로 보존(`date_as_recorded`). 연도·월만 있는 기록에 1일·15일을 만들지 않았다.
+- 그림 좌표는 1년=360일 명목 소수연도 `derived_plot_x`이며 `DERIVED_FOR_VISUALIZATION`으로 표시했다. 이 좌표로 실제 일수 차이를 계산하지 않는다.
+- 동시성 창은 **연도 필드** 기준(같은 해 / 전 해 / 다음 해)이다. ±365일 같은 일수 창은 양력 일수 계산처럼 오해될 수 있어 쓰지 않았다.
+  여기에 '그 이전에 시작했고 CSV에 종료 기록이 없는 지속 제도'(ONGOING)를 따로 붙였다. 결과: `gusun_policy_context_windows.csv` (436쌍, 모두 `CONTEMPORANEITY_ONLY`).
+
+### 9.3 정책 정규화 (`gusun_policy_timeline_normalized.csv`)
+
+- milestone 24개를 하나씩 유지했다. 같은 `policy_episode_id`는 선으로만 잇는다
+  (예: JANGYONG 1785 장용위 → 1788 장용영 확대 → 1793 화성 유수·장용외사; HWASEONG 1789 현륭원 이장 → 1794 축성 하명 → 1796 완성·성역 종료·낙성연; CHOGYE 1781 선발 → 강제절목 → 추가 절목).
+- **POINT_EVENT vs PERSISTENT_INSTITUTIONAL_CONTEXT**: event_kind로 분류했다(규칙, DERIVED). 지속 제도 9개:
+  규장각 설치(1776-09-25), 정유절목 마련(1777-03-21), 『흠휼전칙』 성립(1778-01-12), 검서관 설치(1779-03-27), 초계문신 선발 지시(1781-02-17), 장용위 명명(1785-07-02), 『대전통편』 완성·반포(1785-09-11), 신해통공 시행(1791-01-25), 『증수무원록』 간행·반포 명령(1792-11-20).
+  CSV에 종료일이 없으므로 모두 `context_end_date = OPEN`이며, 그림에서는 오른쪽 축 끝까지 이어지는 점선 + ▷로 그렸다(축 끝은 종료일이 아니다).
+- 시작·종료가 둘 다 CSV milestone인 구간은 화성 축성 사업 하나(1794-01-15 하명 → 1796-09-10 성역 종료)뿐이며 별도 막대로 표시했다.
+- `project_relevance`: HIGH 4건(흠휼전칙, 대전통편 총재 임명·반포, 증수무원록), MEDIUM 10, LOW 10.
+  대시보드에서 HIGH는 진하고 크게(제목 라벨 포함), MEDIUM은 중간, LOW는 흐리게 그리며 상단 버튼으로 숨길 수 있다.
+
+### 9.4 시각화
+
+| 파일 | 내용 |
+|---|---|
+| `gusun_temporal_context_dashboard.html` | 하나의 X축을 공유하는 A(관직 법정 품계 / 가변 lane / career_state band) · B(구순 사건 + 관계군 lane) · C(정책 6개 broad_domain lane) + 오른쪽 **Panel D**(클릭 상세: 구순 사건이면 같은 해·전 해·다음 해·ONGOING 정책 목록; 정책이면 같은 시기 구순 기록). 정책 marker = 기호(event_kind) + 회색 농도(relevance) + lane(domain) + hover |
+| `gusun_1793_context_zoom.html` | 1793년 1–12월 확대: career_state, 구순–주변 인물 관계(인물별 행), 1793 신규 정책 milestone 1건 vs ONGOING CONTEXT 9건(별도 lane) |
+| `gusun_temporal_career_with_rank.html`, `gusun_dynamic_network.html` 등 | 기존 산출물 유지 |
+
+정책 marker 색은 일부러 회색 단계만 썼다. 구순 층(관계군·상태 색)과 색이 겹치면 정책을 구순 관계의 일부로 오독할 수 있기 때문이다.
+
+### 9.5 질문별 답
+
+**Q1. 구순의 관직 trajectory는 시간에 따라 어떻게 변하는가?**
+1777 선전관→별군직(COURT_MILITARY, 가변 품계) → 1778 중화부사(도호부사, 종3품) → 1779 별군직 수행 → 1779 벽동군수(군수, 종4품)
+→ ≤1781-12 백령첨사(첨절제사, 종3품) → 1782–84 영흥부사(대도호부사, 정3품; 1784-04 겸영장) → 1784-09 별군직(가변)에서 정배
+→ 1787-01 별군직(가변)에서 제주 정배 → [1787–1793 기록 없음] → 1793 '전 부사'(현직 품계 없음) → 수금·정배 → 1798 방송.
+고정 품계 축에서 보이는 종3품→종4품→종3품→정3품의 움직임은 **관직 자체의 법정 품계** 변화이며 구순 개인의 품계 변화가 아니다(§8).
+
+**Q2. 고정 품계 관직과 별군직·선전관 같은 가변 직무는 어떻게 구분되는가?**
+lookup의 `rank_fixedness`로 나눈다. FIXED(군수·도호부사·첨사·대도호부사)는 `rank_numeric`이 있어 A① 수치축에 놓이고,
+VARIABLE(선전관·별군직·선전관→별군직·선전관/별군직 계열)은 숫자를 만들지 않고 A② `COURT_MILITARY_VARIABLE` lane에 놓인다.
+구순 경력에서 가변 직무 관측은 1777, 1778, 1779, 1784-09, 1787-01의 5개 시점이고 고정 품계 관직은 1778–1784 사이에 몰려 있다.
+즉 구순은 왕 측근 무관직(가변)과 외임 수령·변장(고정 품계) 사이를 오갔다.
+
+**Q3. 관직 변화와 처벌·유배 상태는 어떻게 구분되는가?**
+처벌·조사·전직은 관직이 아니라 `career_state`이며 A③ 띠에만 그린다. 전 부사는 `FORMER_OFFICIAL`, `current_rank_numeric = NA`,
+`former_statutory_rank = 정3품 또는 종3품`이고, 정배(EXILED)·수감(IMPRISONED)·조사(UNDER_INVESTIGATION)·방송(RELEASED)도 수치축에 들어가지 않는다.
+1784년 3–7월처럼 **재임 중 조사**(영흥부사 + UNDER_INVESTIGATION)는 관직 점과 상태 띠가 동시에 보인다.
+
+**Q4. 구순의 주요 사건 시점에 정조 정부의 주요 정책·제도적 환경은 무엇이었는가?** (굵게 = HIGH)
+
+| event | same_year | previous_year | next_year | ongoing_started_earlier |
+|---|---|---|---|---|
+| E001 1777 별군직 차하 | 정유절목 마련(1777-03-21) | 의리의 탕평(1776-05-16), 규장각 설치(1776-09-25) | **『흠휼전칙』 성립(1778-01-12)** | — |
+| E003 1778 중화부사 임명 | **『흠휼전칙』 성립(1778-01-12)** | 정유절목 마련(1777-03-21) | 검서관 설치(1779-03-27) | 규장각 설치(1776-09-25) |
+| E006 1782 영흥부사 임명 | — | 초계문신 선발 지시(1781-02-17), 강제절목 제정(1781-02-18), 추가 절목 반포(1781-03-10) | — | 규장각 설치(1776-09-25), 정유절목 마련(1777-03-21), **『흠휼전칙』 성립(1778-01-12)**, 검서관 설치(1779-03-27) |
+| E011 1784-03 나문 명령 | — | — | 정유절목 재준행 명령(1785-02-17), **『대전통편』 편찬 총재 임명(1785-02-24)**, 추쇄 포상 관행 혁파(1785-07-02), 장용위 명명(1785-07-02), **『대전통편』 완성·반포(1785-09-11)** | 규장각 설치(1776-09-25), 정유절목 마련(1777-03-21), **『흠휼전칙』 성립(1778-01-12)**, 검서관 설치(1779-03-27), 초계문신 선발 지시(1781-02-17) |
+| E017 1784-09 정배 | — | — | 정유절목 재준행 명령(1785-02-17), **『대전통편』 편찬 총재 임명(1785-02-24)**, 추쇄 포상 관행 혁파(1785-07-02), 장용위 명명(1785-07-02), **『대전통편』 완성·반포(1785-09-11)** | 규장각 설치(1776-09-25), 정유절목 마련(1777-03-21), **『흠휼전칙』 성립(1778-01-12)**, 검서관 설치(1779-03-27), 초계문신 선발 지시(1781-02-17) |
+| E023 1787-01 이윤빈 무고 → 제주 정배 | — | 노비 추쇄 폐단 재신칙(1786-11-03) | 장용영 군안 정비·병력 이속(1788-01-22), 채제공 우의정 임명(1788-02-11) | 규장각 설치(1776-09-25), 정유절목 마련(1777-03-21), **『흠휼전칙』 성립(1778-01-12)**, 검서관 설치(1779-03-27), 초계문신 선발 지시(1781-02-17), 장용위 명명(1785-07-02), **『대전통편』 완성·반포(1785-09-11)** |
+| E029 1793-02-22 도난 사건(사건 개시) | 화성 유수·장용외사 체계 정비(1793-01-12) | **『증수무원록』 간행·반포 명령(1792-11-20)** | 수원성 축조 하명(1794-01-15) | 규장각 설치(1776-09-25), 정유절목 마련(1777-03-21), **『흠휼전칙』 성립(1778-01-12)**, 검서관 설치(1779-03-27), 초계문신 선발 지시(1781-02-17), 장용위 명명(1785-07-02), **『대전통편』 완성·반포(1785-09-11)**, 신해통공 시행(1791-01-25) |
+| E055 1793-05 의금부 수금 명령 | 화성 유수·장용외사 체계 정비(1793-01-12) | **『증수무원록』 간행·반포 명령(1792-11-20)** | 수원성 축조 하명(1794-01-15) | 규장각 설치(1776-09-25), 정유절목 마련(1777-03-21), **『흠휼전칙』 성립(1778-01-12)**, 검서관 설치(1779-03-27), 초계문신 선발 지시(1781-02-17), 장용위 명명(1785-07-02), **『대전통편』 완성·반포(1785-09-11)**, 신해통공 시행(1791-01-25) |
+| E066 1793-06 감사 절도정배 | 화성 유수·장용외사 체계 정비(1793-01-12) | **『증수무원록』 간행·반포 명령(1792-11-20)** | 수원성 축조 하명(1794-01-15) | 규장각 설치(1776-09-25), 정유절목 마련(1777-03-21), **『흠휼전칙』 성립(1778-01-12)**, 검서관 설치(1779-03-27), 초계문신 선발 지시(1781-02-17), 장용위 명명(1785-07-02), **『대전통편』 완성·반포(1785-09-11)**, 신해통공 시행(1791-01-25) |
+| E076 1794-10 백령도 이배 | 수원성 축조 하명(1794-01-15) | 화성 유수·장용외사 체계 정비(1793-01-12) | — | 규장각 설치(1776-09-25), 정유절목 마련(1777-03-21), **『흠휼전칙』 성립(1778-01-12)**, 검서관 설치(1779-03-27), 초계문신 선발 지시(1781-02-17), 장용위 명명(1785-07-02), **『대전통편』 완성·반포(1785-09-11)**, 신해통공 시행(1791-01-25), **『증수무원록』 간행·반포 명령(1792-11-20)** |
+| E082 1798-02 방송 | — | — | — | 규장각 설치(1776-09-25), 정유절목 마련(1777-03-21), **『흠휼전칙』 성립(1778-01-12)**, 검서관 설치(1779-03-27), 초계문신 선발 지시(1781-02-17), 장용위 명명(1785-07-02), **『대전통편』 완성·반포(1785-09-11)**, 신해통공 시행(1791-01-25), **『증수무원록』 간행·반포 명령(1792-11-20)** |
+
+이 표는 **동시성만** 보여준다. 어떤 정책도 구순 사건의 원인으로 연결하지 않았다.
+
+**Q5. 1787년 사건과 1793년 김명신 사건 당시의 정책환경은 어떻게 달랐는가?**
+- 1787-01-03(E023) 기준 이미 성립했거나 같은 해·전 해에 있었던 정책: 규장각 설치(1776-09-25), 정유절목 마련(1777-03-21), **『흠휼전칙』 성립(1778-01-12)**, 검서관 설치(1779-03-27), 초계문신 선발 지시(1781-02-17), 장용위 명명(1785-07-02), **『대전통편』 완성·반포(1785-09-11)**, 노비 추쇄 폐단 재신칙(1786-11-03).
+- 1793-02-22(E029) 기준: 규장각 설치(1776-09-25), 정유절목 마련(1777-03-21), **『흠휼전칙』 성립(1778-01-12)**, 검서관 설치(1779-03-27), 초계문신 선발 지시(1781-02-17), 장용위 명명(1785-07-02), **『대전통편』 완성·반포(1785-09-11)**, 신해통공 시행(1791-01-25), **『증수무원록』 간행·반포 명령(1792-11-20)**, 화성 유수·장용외사 체계 정비(1793-01-12).
+- 두 사건 사이(1787-01-03 ~ 1793-02-22)에 새로 기록된 milestone 6건: 장용영 군안 정비·병력 이속(1788-01-22), 채제공 우의정 임명(1788-02-11), 현륭원 이장(1789-10-07), 신해통공 시행(1791-01-25), **『증수무원록』 간행·반포 명령(1792-11-20)**, 화성 유수·장용외사 체계 정비(1793-01-12).
+  법제 쪽에서는 **『증수무원록』 간행·반포 명령(1792-11-20)**이 1793 사건 약 3개월 전에 더해졌고, 군사 쪽에서는 장용영 확대(1788)와
+  **화성 유수·장용외사 체계(1793-01-12, 사건 약 1개월 전)**, 상업 쪽에서는 신해통공(1791), 정치 쪽에서는 채제공 우의정 임명(1788)이 더해졌다.
+- 1787 사건은 한성의 왕 측근 무관 조직 안에서 국왕이 직접 판정했고(E019–E024), 1793 사건은 충청 병영→관찰사→암행어사→안핵어사→국왕을 거쳤다.
+  이 차이는 사건 기록 자체에서 나오는 것이며, 위 정책 변화가 그 차이를 만들었다는 근거는 CSV에 없다.
+
+**Q6. LEGAL_JUSTICE의 흠휼전칙·대전통편·증수무원록은 어떤 contemporaneous institutional context를 제공하는가?**
+- 『흠휼전칙』(1778-01-12): 정책 CSV 요약상 죄수의 구금·형구·옥중 처우를 규율하는 형정 규범. 구순이 처음 조사받은 1784년, 제주 정배된 1787년, 1793년 김명신 옥중 사망 시점 모두에서 **이미 성립한 규범**(종료 기록 없음)이다.
+- 『대전통편』(1785-02-24 편찬 총재 → 1785-09-11 반포): 1787 사건과 1793 사건 모두 반포 이후다.
+- 『증수무원록』(1792-11-20 간행·반포 명령): 검험 표준화. 1793 사건 직전 해의 milestone이다.
+- 1793 사건 기록에는 장기 구금, 옥중 사망(E056, 질병사 판정 E062 — 장형·평문 없음), 강압 진술(E040–E049)이 나오므로 위 법제와 **주제가 겹친다.**
+  그러나 master CSV의 어떤 사건 행도 이 법전·규범을 언급하거나 적용했다고 기록하지 않는다. 정책 CSV의 notes가 JP004·JP019를 '구순–김명신 사건과 관련성이 높다'고 적은 것은
+  **편집자의 relevance 판단**이지 사료상의 연결이 아니다. 따라서 '이 규범이 사건 처리에 영향을 주었다'는 결론은 내리지 않는다.
+  맥락 정책 행 C001(흠휼전칙)에 대한 master CSV의 주석('Context only. Do not infer direct causal effect')도 같은 원칙이다.
+
+**Q7. 장용위→장용영 발전은 구순의 무관 경력과 같은 시대에 어떻게 전개되는가?**
+장용위 명명(1785-07-02)은 구순의 1784-09 정배와 1787-01 별군직 재등장 사이의 **기록 공백**(E018) 안에 있다. 장용영 확대(1788-01-22)는 1787 제주 정배 이후 공백 안에 있고,
+화성 유수·장용외사 체계(1793-01-12)는 구순의 덕평 거주가 처음 관측되는 1793-02보다 약 1개월 앞서며, 그 날짜의 구순 상태는 CSV에 없다.
+1785–1792년 구순 관측 기록은 E019, E020, E021, E022, E023, E024뿐이다 (모두 1787-01-03 한 날짜). 구순의 무관 경력은 선전관·별군직(왕 측근 무관)과 외임 수령·변장으로 기록되며,
+CSV에는 구순이 장용위·장용영에 속했다는 기록이 없다. 두 흐름은 같은 시대에 **평행하게** 전개될 뿐 교차점이 관측되지 않는다.
+
+**Q8. 탕평·규장각·초계문신 정책은 구순 경력과 별개의 국가 수준 변화로 어떻게 나타나는가?**
+규장각 설치(1776-09-25)·검서관(1779)·초계문신 선발과 절목(1781-02~03)·의리의 탕평(1776)·채제공 우의정(1788)은 모두 NATIONAL scale의 인사·학술 제도다.
+정책 CSV 요약상 초계문신은 '참상·참하 **문신**' 대상이고, 구순은 무관·수령 계열이므로 제도의 직접 대상이 아니다.
+대시보드 C 패널 POLITICS_PERSONNEL lane에서 이 정책들은 구순의 1777–1782 임명 기록(A 패널)과 같은 시기에 보이지만, 두 층을 잇는 edge나 사건 행은 없다.
+
+**Q9. 1793년 사건에서 실제로 확인되는 제도적 경로와 단순한 시대적 배경은 무엇이 다른가?**
+- **확인되는 경로**(CSV edge가 있는 단계 연결 9개): S0_HOUSEHOLD→S1_COMPLAINANT; S1_COMPLAINANT→S2_CAMP_STAFF(병영 비장·영리); S2_CAMP_STAFF(병영 비장·영리)→S3_ARREST_TEAM(장교); S4_COMMANDERS(병사·영장)→S5_SUSPECTS_WITNESSES; S1_COMPLAINANT→S4_COMMANDERS(병사·영장); S1_COMPLAINANT→S5_SUSPECTS_WITNESSES; S2_CAMP_STAFF(병영 비장·영리)→S5_SUSPECTS_WITNESSES; S4_COMMANDERS(병사·영장)→S5_SUSPECTS_WITNESSES; S9_CENTRAL(국왕·비변사·의금부)→S1_COMPLAINANT.
+  구체적으로 구순 → 유제희(혐의자 이름 제공, E038) → 한재욱(명단 보고, E039) → 이진욱·조계완(체포 지시, E031) → 피의자·증인,
+  병사 이광섭의 체포 명령(E035–E036), 그리고 국왕의 수금·조사·정배 명령(E055, E059, E066).
+- **CSV edge가 없는 단계**(9개): S3_ARREST_TEAM(장교)→S4_COMMANDERS(병사·영장); S5_SUSPECTS_WITNESSES→S6_GOVERNOR(관찰사); S6_GOVERNOR(관찰사)→S7_SECRET_INSPECTOR(암행어사); S7_SECRET_INSPECTOR(암행어사)→S8_SPECIAL_INVESTIGATOR(안핵어사); S8_SPECIAL_INVESTIGATOR(안핵어사)→S9_CENTRAL(국왕·비변사·의금부); S2_CAMP_STAFF(병영 비장·영리)→S4_COMMANDERS(병사·영장); S6_GOVERNOR(관찰사)→S9_CENTRAL(국왕·비변사·의금부); S7_SECRET_INSPECTOR(암행어사)→S9_CENTRAL(국왕·비변사·의금부); S8_SPECIAL_INVESTIGATOR(안핵어사)→S9_CENTRAL(국왕·비변사·의금부). 자동으로 잇지 않았다.
+- **시대적 배경**: 1793 정책 milestone 1건(화성 유수·장용외사 체계 정비(1793-01-12))과 ONGOING CONTEXT 9건. 이것들은 관계 edge도 경로의 단계도 아니며,
+  1793 확대 보기에서 별도 lane에 '신규'와 'ONGOING'으로 나눠 표시했다. ONGOING은 'CSV에 종료일이 없다'는 뜻이지 1793년 시행이 확인됐다는 뜻이 아니다.
+
+**Q10. 시각화에서 직접 관측값·lookup 파생값·정책 맥락값·미해결값을 구별할 수 있는가?**
+
+| 층 | 화면에서의 표현 | 데이터 표시 |
+|---|---|---|
+| 직접 관측(구순 기록) | A·B 패널의 색 점(일자 확정)·막대(구간), hover의 출처·grade | `evidence_status=OBSERVED` |
+| lookup 파생(법정 품계) | A① Y 위치, hover '법정 품계(관직 자체)', '개인 품계 아님' 문구 | `office_lookup_match_status`, `office_lookup_verification_status` |
+| 규칙 파생(관계 정규화·상태 구간·시간 창) | 관계군 lane, 상태 띠, ◇(관측 시점만 아는 관계) | `DERIVED`, `RELATION_WINDOW_DERIVED` |
+| 정책 맥락 | C 패널의 회색 기호, 점선 지속 제도, Panel D의 '동시성만' 경고 | `data_layer=POLICY_CONTEXT`, `causal_link_to_gusun=NONE` |
+| 미해결·미관측 | 빗금(종료 미상), ◁(시작 미상), ▷(OPEN), 연한 주황(1787→1793 공백), 'NA' | `UNKNOWN`/`OPEN`/`UNRESOLVED`, time_uncertainty |
+| 시각화 좌표 | X 위치 전부 | `DERIVED_FOR_VISUALIZATION` |
+
+### 9.6 동일인 증거의 엄격한 분리
+
+`gusun_identity_links.csv`는 이제 반대 증거(`contradicting_evidence`), 긴장(`tension_evidence`), 결락(`missing_evidence`)을 서로 다른 컬럼으로 둔다.
+**해배 기록이 없다는 사실은 반대 증거가 아니라 missing transition evidence다.**
+L00(1787 ↔ 1793): 반대 증거 = NONE_IN_CSV · 긴장 = AMNESTY_EXCLUSION_TENSION[E023;E025] · 결락 = MISSING_RELEASE_RECORD[E025]; MISSING_RETROSPECTIVE_REFERENCE[R8A]; MISSING_KINSHIP_BRIDGE[D01].
+판정은 HIGH_CONFIDENCE로 변함없다.
+
+### 9.7 검증 (`gusun_context_validation.csv`) — PASS 16 · REPORTED 1 · FAIL 0
+
+| check_no | layer | check | result | detail |
+|---|---|---|---|---|
+| 1 | OFFICE_LOOKUP | FIXED인데 rank_numeric이 없는 행 | PASS | lookup FIXED 12행 모두 값 있음 |
+| 2 | OFFICE_LOOKUP | VARIABLE/비고정인데 rank_numeric이 들어간 행 | PASS | 비고정 lookup 16행 (FORMER_OFFICE, NO_SINGLE_STATUTORY_RANK, UNRANKED_CLERICAL, VARIABLE) 모두 빈 값 |
+| 3 | OFFICE_LOOKUP | FORMER_OFFICIAL인데 현재 rank_numeric이 들어간 행 | PASS | FORMER_OFFICIAL 행 14개 모두 rank_numeric 비움 (former_statutory_rank만 보존) |
+| 4 | OFFICE_LOOKUP | unmatched office status (보고 항목) | REPORTED | 고유값 48개 / 출현 113회; 성격 {'RULER_OR_INSTITUTION': 46, 'NON_OFFICE_PERSON_OR_HOUSEHOLD': 33, 'PENAL_OR_CAREER_STATE': 17, 'POLICY_EVENT_OR_LIST': 12, 'POSSIBLE_OFFICE_NOT_IN_LOOKUP': 5}; lookup 추가 후보(직함처럼 보이나 키 없음): ['별군직 청수 관련', '병영·진영 실무자', '영흥부 아전', '중영 하급 실무자', '체포 장교'] |
+| 5 | OFFICE_LOOKUP | join 후 temporal network 원본 행 수 불변 | PASS | 원본 102행 → 결합 102행, event_id 순서 동일=True |
+| 6 | POLICY | sort_key와 year-month-day(·date_lunar) 순서 일치 | PASS | 24행 모두 sort_key=YYYYMMDD=date_lunar, 정렬 순서 동일 |
+| 7 | POLICY | 동일 policy_event_id 중복 | PASS | 없음 |
+| 8 | POLICY | EXACT_DAY인데 month/day 없음 | PASS | EXACT_DAY 24행 모두 월·일 있음 |
+| 9 | POLICY | broad_domain vocabulary | PASS | 6개 vocabulary 내: ECONOMY_COMMERCE, LEGAL_JUSTICE, LOCAL_ADMIN_URBAN, MILITARY_DEFENSE, POLITICS_PERSONNEL, SOCIAL_STATUS_PERSONNEL |
+| 10 | POLICY | policy episode 내 날짜 역전 (policy_event_id 순서 기준) | PASS | 11개 episode 모두 id 순서=날짜 순서 |
+| 11 | POLICY | source_url 존재하되 실제 접속하지 않음 | PASS | source_url 24/24행 존재; 런타임 소켓 연결 시도 0건 |
+| 12 | TEMPORAL | event_start > event_end 없음 | PASS | events 102행·edges 97행 검사 |
+| 13 | TEMPORAL | earliest_possible > latest_possible 없음 (events·edges·uncertainty·career) | PASS | 모든 하한 ≤ 상한 |
+| 14 | TEMPORAL | edge가 존재하지 않는 person_id를 참조하지 않음 | PASS | 41 persons |
+| 15 | TEMPORAL | UNKNOWN 날짜를 실제 날짜처럼 계산에 사용하지 않음; 월 단위에 일 생성 없음 | PASS | UNKNOWN→plot_x=NaN; 월 단위 event_start는 YYYY-MM 유지 |
+| 16 | NETWORK | 정책을 사람 node로 잘못 넣지 않음 | PASS | 정책 id 35개·master POL_* 노드 모두 persons/edges에 없음 |
+| 17 | NETWORK | 정책–인물 인과 edge를 임의 생성하지 않음 | PASS | 정책 행·master 맥락(C) 행에서 파생된 edge 0개; 정책과는 동시성 표(window)만 존재 |
+
+### 9.8 추가 산출물
+
+| 파일 | 내용 |
+|---|---|
+| `gusun_input_audit.csv` | 세 입력 파일 점검 |
+| `gusun_policy_timeline_normalized.csv` | 정책 24행 + persistence_class·derived_plot_x·episode 순서 |
+| `gusun_temporal_events_normalized.csv` | 구순 사건 정규화본 + lookup 결합 컬럼 + `date_as_recorded` + `current_rank_numeric` |
+| `gusun_policy_context_windows.csv` | 구순 사건 × 정책 동시성 쌍 (인과 주장 없음) |
+| `gusun_master_context_vs_policy_crosswalk.csv` | master 맥락 행 ↔ 정책 행 같은 날짜 대응 (병합 안 함) |
+| `gusun_context_validation.csv` | 17개 검사 |
+| `gusun_temporal_context_dashboard.html`, `gusun_1793_context_zoom.html` | 새 시각화 |

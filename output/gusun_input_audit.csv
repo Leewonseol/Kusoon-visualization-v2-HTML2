@@ -1,0 +1,30 @@
+﻿file,metric,value
+gusun_temporal_network_master_v0_2.csv,row_count,102
+gusun_temporal_network_master_v0_2.csv,column_names,event_id;event_order;year;date_lunar;date_end_lunar;time_precision;phase;subject_id;subject_name_ko;subject_name_hanja;subject_office_status;subject_level_current;subject_level_peak;subject_role_relative_to_gu;object_id;object_name_ko;object_name_hanja;object_office_status;object_level_current;object_level_peak;object_role_relative_to_gu;level_diff_subject_minus_object;relation_type;relation_layer;location;event_summary;outcome_or_state;claim_status;evidence_grade;identity_confidence_gu;source_stage;source_name;source_url;secondary_source_url;source_support_note;superseded_by_event_id;missingness_flag;modeling_note;record_class;context_domain;context_name;external_actor;context_relevance;gu_identity_segment;identity_bridge_status;identity_link_basis
+gusun_temporal_network_master_v0_2.csv,date_range,"1763-01-13 ~ 1798-02-22 (date_lunar, 음력; year 1763–1798)"
+gusun_temporal_network_master_v0_2.csv,unique_person_count,P_ id 34개 (P_GUSUN 포함; 기관 P_STATE·P_BIBEONSA·P_UIGEUMBU·P_JOSEON·P_QING 포함) / 이름 있는 개인 29명
+gusun_temporal_network_master_v0_2.csv,unique_office_status_values,76
+gusun_temporal_network_master_v0_2.csv,unique_policy_domains,context_domain(C행) 11종: bureaucratic_governance;criminal_justice;criminal_procedure_elite_officials;foreign_policy;forensic_criminal_procedure;legal_codification;military_administrative_policy;military_governance;military_tax_local_administration;state_capacity_public_works;state_documentation
+gusun_temporal_network_master_v0_2.csv,duplicate_rows,0
+gusun_temporal_network_master_v0_2.csv,duplicate_event_id,0
+gusun_temporal_network_master_v0_2.csv,missing_critical_fields,event_id=0; date_lunar=0; time_precision=0; subject_id=0; object_id=0; relation_type=0; source_url=4 (source_url 4건은 STATE_GAP 연구공백 행)
+office_rank_lookup.csv,row_count,28
+office_rank_lookup.csv,column_names,raw_office_status;normalized_office_title;office_title_hanja;record_type;administrative_scope;statutory_rank;rank_numeric;rank_fixedness;rank_visualizable;former_statutory_rank;source_title_1;source_url_1;source_title_2;source_url_2;verification_status;notes
+office_rank_lookup.csv,date_range,NA (시간 정보 없음)
+office_rank_lookup.csv,unique_person_count,NA (인물 없음)
+office_rank_lookup.csv,unique_office_status_values,raw_office_status 28 / normalized_office_title 22
+office_rank_lookup.csv,unique_policy_domains,NA (administrative_scope 10종)
+office_rank_lookup.csv,duplicate_rows,0
+office_rank_lookup.csv,duplicate_raw_office_status,0
+office_rank_lookup.csv,missing_critical_fields,raw_office_status=0; statutory_rank=0; rank_fixedness=0; rank_visualizable=0; verification_status=0; rank_numeric 빈 값 16 (비고정·전직 — 정상)
+jeongjo_policy_timeline.csv,row_count,24
+jeongjo_policy_timeline.csv,column_names,policy_event_id;policy_episode_id;broad_domain;policy_group;policy_title;milestone;year;month;day;date_lunar;sort_key;date_precision;calendar_basis;event_kind;policy_scale;google_ai_claim_status;project_relevance;summary;source_title;source_url;verification_status;notes
+jeongjo_policy_timeline.csv,date_range,17760516 ~ 17961009 (sort_key; 서기 연도+조선 음력 월일)
+jeongjo_policy_timeline.csv,unique_person_count,NA (인물 컬럼 없음)
+jeongjo_policy_timeline.csv,unique_office_status_values,NA
+jeongjo_policy_timeline.csv,unique_policy_domains,6종: POLITICS_PERSONNEL=7; LOCAL_ADMIN_URBAN=5; SOCIAL_STATUS_PERSONNEL=4; LEGAL_JUSTICE=4; MILITARY_DEFENSE=3; ECONOMY_COMMERCE=1
+jeongjo_policy_timeline.csv,unique_policy_episodes,11종
+jeongjo_policy_timeline.csv,calendar_basis,JOSEON_LUNAR=22; JOSEON_REGNAL_DATE=2 (JOSEON_REGNAL_DATE 2건도 변환하지 않고 같은 명목 음력 축에 표시)
+jeongjo_policy_timeline.csv,duplicate_rows,0
+jeongjo_policy_timeline.csv,duplicate_policy_event_id,0
+jeongjo_policy_timeline.csv,missing_critical_fields,policy_event_id=0; policy_episode_id=0; broad_domain=0; policy_title=0; year=0; month=0; day=0; sort_key=0; date_precision=0; project_relevance=0; source_url=0

@@ -244,7 +244,8 @@ def career_figure(res) -> go.Figure:
                          textposition="inside", textfont=dict(color=INK, size=11), showlegend=False,
                          hovertemplate=(f"<b>동일인 연결 L00: {l00.same_person_status}</b><br>"
                                         f"지지: {esc(l00.supporting_evidence)}<br>"
-                                        f"긴장: {esc(l00.contradicting_evidence)}<br>"
+                                        f"반대 증거: {esc(l00.contradicting_evidence)}<br>"
+                                        f"긴장: {esc(l00.tension_evidence)}<br>"
                                         f"결락: {esc(l00.missing_evidence)}<extra></extra>")),
                   row=3, col=1)
     fig.update_yaxes(categoryorder="array", categoryarray=list(reversed(LANES)), row=1, col=1)

@@ -67,7 +67,10 @@ def other_party_rows(joined: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-def figure(res, rk) -> go.Figure:
+def add_career_panels(fig, res, rk, rows=(1, 2, 3), show_others=True, gap_annotation=True):
+    """관직 법정 품계(①)·가변 lane(②)·career_state band(③)를 주어진 subplot 행에 그린다.
+    모든 점의 customdata = [hover_html, click_key] (대시보드 클릭 상세용)."""
+    r_fix, r_var, r_state = rows
     J = rk["joined"]
     career = res["career"]
     E = res["events"].set_index("event_id")
@@ -77,13 +80,10 @@ def figure(res, rk) -> go.Figure:
     fixed = g[g.rank_numeric.notna()]
     var = g[g.rank_numeric.isna() & (g.rank_fixedness != "FORMER_OFFICE")].copy()
     var["lane"] = var.apply(gor.variable_lane, axis=1)
-    others = other_party_rows(J)
+    HT = "%{customdata[0]}<extra></extra>"
 
-    fig = make_subplots(rows=3, cols=1, shared_xaxes=True, vertical_spacing=0.06,
-                        row_heights=[0.42, 0.28, 0.30],
-                        subplot_titles=("① 고정 품계 관직 — 관직 자체의 법정 품계 (개인 품계 아님 · Y는 정렬용)",
-                                        "② 가변·무품 직함 — 수치축과 분리된 category lane",
-                                        "③ career_state band — 전직·조사·수금·정배 (관직 축과 분리)"))
+    def cd(df):
+        return [[hover(r, r.who), f"G:{r.event_id}"] for _, r in df.iterrows()]
 
     # ① 고정 품계: 구순
     for prec, sub in fixed.groupby("time_precision"):
@@ -92,7 +92,7 @@ def figure(res, rk) -> go.Figure:
             first_ids = set(sub.drop_duplicates("normalized_office_title").event_id)
             fig.add_trace(go.Scatter(x=sub.plot_x_start, y=sub.rank_numeric, mode="lines",
                                      line=dict(color="#c3c2b7", width=1.5, dash="dot"), hoverinfo="skip",
-                                     name="관측 간 연결선 (사이 재임 미관측)"), row=1, col=1)
+                                     name="관측 간 연결선 (사이 재임 미관측)"), row=r_fix, col=1)
             for state, ss in sub.groupby("career_state"):
                 fig.add_trace(go.Scatter(
                     x=ss.plot_x_start, y=ss.rank_numeric, mode="markers+text",
@@ -101,22 +101,20 @@ def figure(res, rk) -> go.Figure:
                           zip(ss.normalized_office_title, ss.statutory_rank, ss.event_id)],
                     textposition=["bottom right" if "+" in str(t) else "top center"
                                   for t in ss.normalized_office_title],
-                    textfont=dict(size=10, color=gv.INK2),
-                    customdata=[hover(r, r.who) for _, r in ss.iterrows()],
-                    hovertemplate="%{customdata}<extra></extra>",
+                    textfont=dict(size=10, color=gv.INK2), customdata=cd(ss), hovertemplate=HT,
                     name=f"구순 · 고정 품계 관직 ({gv.STATE_KO[state]})", legendgroup=f"st_{state}"),
-                    row=1, col=1)
+                    row=r_fix, col=1)
         else:
             for _, r in sub.iterrows():
                 fig.add_trace(go.Scatter(
                     x=[r.plot_x_start, r.plot_x_end], y=[r.rank_numeric] * 2, mode="lines+markers",
                     line=dict(color=gv.STATE_COLOR[r.career_state], width=7), opacity=0.55,
                     marker=dict(symbol="line-ns", size=14, line=dict(width=2, color=gv.STATE_COLOR[r.career_state])),
-                    hovertemplate=hover(r, r.who) + "<extra></extra>",
-                    name="구순 · 월 단위 관측(구간)"), row=1, col=1)
+                    customdata=[[hover(r, r.who), f"G:{r.event_id}"]] * 2, hovertemplate=HT,
+                    name="구순 · 월 단위 관측(구간)"), row=r_fix, col=1)
                 fig.add_annotation(x=r.plot_x_end, y=r.rank_numeric, text=f"{r.normalized_office_title} (월 단위)",
                                    showarrow=False, xanchor="left", yshift=12, font=dict(size=10, color=gv.INK2),
-                                   row=1, col=1)
+                                   row=r_fix, col=1)
 
     # ② 가변 lane: 구순
     for state, ss in var.groupby("career_state"):
@@ -124,26 +122,27 @@ def figure(res, rk) -> go.Figure:
             x=ss.plot_x_start, y=ss.lane, mode="markers",
             marker=dict(size=12, color=gv.STATE_COLOR[state], symbol="diamond",
                         line=dict(color=gv.SURFACE, width=2)),
-            customdata=[hover(r, r.who) for _, r in ss.iterrows()],
-            hovertemplate="%{customdata}<extra></extra>",
-            name=f"구순 · 가변 품계 직함 ({gv.STATE_KO[state]})", legendgroup=f"st_{state}"), row=2, col=1)
+            customdata=cd(ss), hovertemplate=HT,
+            name=f"구순 · 가변 품계 직함 ({gv.STATE_KO[state]})", legendgroup=f"st_{state}"), row=r_var, col=1)
 
     # 다른 인물 (기본 숨김)
-    of = others[others.rank_numeric.notna()] if len(others) else others
-    ov = others[others.rank_numeric.isna() & (others.rank_fixedness != "FORMER_OFFICE")] if len(others) else others
-    for sub, row, ycol in ((of, 1, "rank_numeric"), (ov, 2, "lane")):
-        sub = sub[sub.plot_x_start.notna()]
-        if not len(sub):
-            continue
-        fig.add_trace(go.Scatter(
-            x=sub.plot_x_start, y=sub[ycol], mode="markers",
-            marker=dict(size=8, color="white", line=dict(color=OTHER_COLOR, width=1.5),
-                        symbol="circle" if row == 1 else "diamond-open"),
-            customdata=[hover(r, r.who) for _, r in sub.iterrows()], hovertemplate="%{customdata}<extra></extra>",
-            name="다른 인물의 관직 (참고 · 범례 클릭으로 표시)", legendgroup="others",
-            showlegend=row == 1, visible="legendonly"), row=row, col=1)
+    if show_others:
+        others = other_party_rows(J)
+        of = others[others.rank_numeric.notna()] if len(others) else others
+        ov = others[others.rank_numeric.isna() & (others.rank_fixedness != "FORMER_OFFICE")] if len(others) else others
+        for sub, row, ycol in ((of, r_fix, "rank_numeric"), (ov, r_var, "lane")):
+            sub = sub[sub.plot_x_start.notna()]
+            if not len(sub):
+                continue
+            fig.add_trace(go.Scatter(
+                x=sub.plot_x_start, y=sub[ycol], mode="markers",
+                marker=dict(size=8, color="white", line=dict(color=OTHER_COLOR, width=1.5),
+                            symbol="circle" if row == r_fix else "diamond-open"),
+                customdata=cd(sub), hovertemplate=HT,
+                name="다른 인물의 관직 (참고 · 범례 클릭으로 표시)", legendgroup="others",
+                showlegend=row == r_fix, visible="legendonly"), row=row, col=1)
 
-    # ③ career_state band (기존 spell 재사용) + 전직 hover에 former_statutory_rank
+    # ③ career_state band + 전직 hover에 former_statutory_rank
     lk = rk["lookup"].set_index("raw_office_status")
     former_rank = lk.loc["전 부사", "former_statutory_rank"] if "전 부사" in lk.index else gp.NA
     for _, s in career.iterrows():
@@ -156,55 +155,65 @@ def figure(res, rk) -> go.Figure:
         hv = (f"<b>{s.spell_id} {gv.STATE_KO[s.career_state]} ({s.career_state})</b><br>"
               f"{gv.esc(s.office_or_status)} · {gv.esc(s.location)}<br>시작 {s.start} ({s.start_precision}) · "
               f"종료 [{s.earliest_end}, {s.latest_end}]<br>근거 {s.evidence_start} → {s.evidence_end}<br>"
-              f"{gv.esc(s.notes)}{extra}<extra></extra>")
+              f"{gv.esc(s.notes)}{extra}")
+        key = f"S:{s.spell_id}"
         if x1 is not None and x1 > x0:
             fig.add_trace(go.Bar(base=[x0], x=[x1 - x0], y=[y], orientation="h", width=0.62,
                                  marker=dict(color=color, line=dict(color=gv.SURFACE, width=1)),
                                  text=[s.location] if x1 - x0 > 1.0 else None, textposition="inside",
                                  textangle=0, insidetextanchor="start", textfont=dict(color="white", size=10),
-                                 showlegend=False, hovertemplate=hv), row=3, col=1)
+                                 showlegend=False, customdata=[[hv, key]], hovertemplate=HT), row=r_state, col=1)
         else:
             fig.add_trace(go.Scatter(x=[x0], y=[y], mode="markers",
                                      marker=dict(symbol="line-ns", size=16, line=dict(width=3, color=color)),
-                                     showlegend=False, hovertemplate=hv), row=3, col=1)
+                                     showlegend=False, customdata=[[hv, key]], hovertemplate=HT),
+                          row=r_state, col=1)
         if x1 is not None and x2 is not None and x2 > x1:
             fig.add_trace(go.Bar(base=[x1], x=[x2 - x1], y=[y], orientation="h", width=0.62,
                                  marker=dict(color="rgba(0,0,0,0)", line=dict(color=color, width=1),
                                              pattern=dict(shape="/", fgcolor=color, size=6, solidity=0.3)),
-                                 showlegend=False, hovertemplate=hv.replace("<extra>", "<br><i>빗금=종료 가능 구간</i><extra>")),
-                          row=3, col=1)
+                                 showlegend=False, customdata=[[hv + "<br><i>빗금=종료 가능 구간</i>", key]],
+                                 hovertemplate=HT), row=r_state, col=1)
         if s.career_state == "FORMER_OFFICIAL":
             fig.add_annotation(x=x0, y=y, text=f"전 부사 — 과거 관직 법정품계: {former_rank}", showarrow=True,
                                arrowhead=0, ax=-10, ay=-26, xanchor="right", font=dict(size=10, color=gv.INK2),
-                               row=3, col=1)
+                               row=r_state, col=1)
     state_order = ["현직", "조사 중", "수감", "정배", "방송(석방)", "전직(비현직)"]
     for st in ["ACTIVE", "UNDER_INVESTIGATION", "IMPRISONED", "EXILED", "RELEASED", "FORMER_OFFICIAL"]:
         fig.add_trace(go.Bar(x=[None], y=[None], marker=dict(color=gv.STATE_COLOR[st]),
-                             name=f"상태: {gv.STATE_KO[st]} ({st})", legendgroup=f"st_{st}"), row=3, col=1)
+                             name=f"상태: {gv.STATE_KO[st]} ({st})", legendgroup=f"st_{st}"), row=r_state, col=1)
 
-    # 1787–1793 미관측 구간 (세 패널 공통)
-    for r in (1, 2, 3):
+    for r in rows:
         fig.add_vrect(x0=gp.lx("1787-01-03"), x1=gp.lx("1793-02-22"), fillcolor="#fff1ea", opacity=0.6,
                       line_width=0, layer="below", row=r, col=1)
-    fig.add_annotation(x=(gp.lx("1787-01-03") + gp.lx("1793-02-22")) / 2, y=2.6, row=1, col=1, showarrow=False,
-                       text="1787→1793 미관측 (해배 기록 없음)<br>동일인 L00 = HIGH_CONFIDENCE",
-                       font=dict(size=10, color=gv.INK2))
-
+    if gap_annotation:
+        fig.add_annotation(x=(gp.lx("1787-01-03") + gp.lx("1793-02-22")) / 2, y=2.6, row=r_fix, col=1,
+                           showarrow=False, text="1787→1793 미관측 (해배 기록 없음)<br>동일인 L00 = HIGH_CONFIDENCE",
+                           font=dict(size=10, color=gv.INK2))
     ticks = [2.5, 3.0, 3.5, 4.0, 4.5]
-    fig.update_yaxes(row=1, col=1, autorange=False, range=[4.85, 2.3], tickmode="array", tickvals=ticks,
+    fig.update_yaxes(row=r_fix, col=1, autorange=False, range=[4.85, 2.3], tickmode="array", tickvals=ticks,
                      ticktext=[f"{gor.RANK_LABEL[t]} ({t})" for t in ticks],
                      title=dict(text="법정 품계 (위=높음)", font=dict(size=11, color=gv.MUTED)))
-    fig.update_yaxes(row=2, col=1, categoryorder="array", categoryarray=list(reversed(VAR_LANES)),
+    fig.update_yaxes(row=r_var, col=1, categoryorder="array", categoryarray=list(reversed(VAR_LANES)),
                      tickmode="array", tickvals=VAR_LANES, ticktext=[VAR_LANE_KO[v] for v in VAR_LANES],
                      range=[-0.5, len(VAR_LANES) - 0.5])
-    fig.update_yaxes(row=3, col=1, categoryorder="array", categoryarray=list(reversed(state_order)))
+    fig.update_yaxes(row=r_state, col=1, categoryorder="array", categoryarray=list(reversed(state_order)))
+    # 2번 패널의 lane이 비어 있어도 축에 나오도록 투명 점
+    fig.add_trace(go.Scatter(x=[None] * 4, y=VAR_LANES, mode="markers", showlegend=False, hoverinfo="skip"),
+                  row=r_var, col=1)
+
+
+def figure(res, rk) -> go.Figure:
+    fig = make_subplots(rows=3, cols=1, shared_xaxes=True, vertical_spacing=0.06,
+                        row_heights=[0.42, 0.28, 0.30],
+                        subplot_titles=("① 고정 품계 관직 — 관직 자체의 법정 품계 (개인 품계 아님 · Y는 정렬용)",
+                                        "② 가변·무품 직함 — 수치축과 분리된 category lane",
+                                        "③ career_state band — 전직·조사·수금·정배 (관직 축과 분리)"))
+    add_career_panels(fig, res, rk, rows=(1, 2, 3))
     gv.base_layout(fig, "구순(具純) 경력 × 관직의 법정 품계 (office_rank_lookup 결합)", 1080)
     fig.update_layout(barmode="overlay", margin=dict(l=210))
     for r in (1, 2, 3):
         gv.year_axis(fig, 1777, 1799, row=r, col=1, title=(r == 3))
-    # 2번 패널의 lane이 비어 있어도 축에 나오도록 투명 점
-    fig.add_trace(go.Scatter(x=[None] * 4, y=VAR_LANES, mode="markers", showlegend=False, hoverinfo="skip"),
-                  row=2, col=1)
     return fig
 
 
