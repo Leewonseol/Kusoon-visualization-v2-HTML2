@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>구순 Temporal Network</title>
+  <meta name="description" content="조선 후기 무관 구순(具純)의 관직·관계망·사건과 정조대 정책을 같은 시간축에 놓은 정적 시각화 모음">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <h1>구순(具純) Temporal Network</h1>
+      <p>관직·관계망·사건과 정조대 정책을 같은 음력 시간축에 놓은 시각화</p>
+    </div>
+    <!-- JS가 없어도 각 링크는 iframe(name="viz")에서 열린다 -->
+    <nav class="viz-nav" aria-label="시각화 선택">
+      <a href="./output/gusun_temporal_context_dashboard.html" target="viz" data-key="dashboard" aria-current="page">전체 시간·정책 대시보드</a>
+      <a href="./output/gusun_1793_context_zoom.html" target="viz" data-key="zoom1793">1793년 구순–김명신 사건 확대</a>
+      <a href="./output/gusun_temporal_career_with_rank.html" target="viz" data-key="career">구순 관직·품계 타임라인</a>
+      <a href="./output/gusun_dynamic_network.html" target="viz" data-key="dynamic">동적 인물 네트워크</a>
+      <a href="./output/gusun_temporal_multiplex_network.html" target="viz" data-key="multiplex">Temporal Multiplex Network</a>
+    </nav>
+  </header>
+
+  <div class="viewer-bar">
+    <span>현재 보기: <strong id="current-title">전체 시간·정책 대시보드</strong></span>
+    <a id="open-new" href="./output/gusun_temporal_context_dashboard.html" target="_blank" rel="noopener">새 탭에서 전체 화면으로 열기 ↗</a>
+  </div>
+
+  <main class="viewer">
+    <iframe name="viz" id="viz" title="전체 시간·정책 대시보드"
+            src="./output/gusun_temporal_context_dashboard.html" loading="eager"></iframe>
+  </main>
+
+  <section class="catalog" aria-labelledby="catalog-title">
+    <h2 id="catalog-title">시각화 목록</h2>
+    <p>각 파일은 Plotly가 포함된 self-contained HTML이라 처음 열 때 몇 MB를 내려받습니다.</p>
+    <ul class="cards">
+      <li class="card primary">
+        <span class="tag">메인</span>
+        <h3>전체 시간·정책 대시보드</h3>
+        <p>1776–1799 공통 시간축 위에 구순의 관직·법정 품계, career_state, 사건·관계, 정조대 정책 milestone을 나란히 표시합니다. 점을 클릭하면 같은 해·전 해·다음 해 정책이 나옵니다(동시성만, 인과 아님).</p>
+        <div class="actions">
+          <a href="./output/gusun_temporal_context_dashboard.html" target="viz" data-key="dashboard">여기서 보기</a>
+          <a href="./output/gusun_temporal_context_dashboard.html" target="_blank" rel="noopener">새 탭 ↗</a>
+        </div>
+      </li>
+      <li class="card">
+        <span class="tag">1793</span>
+        <h3>1793년 구순–김명신 사건 확대</h3>
+        <p>1793년 음력 1–12월 확대: 구순의 상태 변화, 주변 인물과의 관계, 1793년 신규 정책과 이전부터 이어진 제도(ONGOING)를 구분해 보여줍니다.</p>
+        <div class="actions">
+          <a href="./output/gusun_1793_context_zoom.html" target="viz" data-key="zoom1793">여기서 보기</a>
+          <a href="./output/gusun_1793_context_zoom.html" target="_blank" rel="noopener">새 탭 ↗</a>
+        </div>
+      </li>
+      <li class="card">
+        <span class="tag">관직</span>
+        <h3>구순 관직·품계 타임라인</h3>
+        <p>관직 자체의 법정 품계(개인 품계 아님)를 수치축에, 선전관·별군직 같은 가변 직무를 별도 lane에, 전직·정배·수감을 상태 띠에 분리해 그립니다.</p>
+        <div class="actions">
+          <a href="./output/gusun_temporal_career_with_rank.html" target="viz" data-key="career">여기서 보기</a>
+          <a href="./output/gusun_temporal_career_with_rank.html" target="_blank" rel="noopener">새 탭 ↗</a>
+        </div>
+      </li>
+      <li class="card">
+        <span class="tag">네트워크</span>
+        <h3>동적 인물 네트워크</h3>
+        <p>CSV에 기록이 있는 시점만 프레임으로 만든 애니메이션. 슬라이더로 시점을 옮기며 관계의 등장·소멸을 봅니다.</p>
+        <div class="actions">
+          <a href="./output/gusun_dynamic_network.html" target="viz" data-key="dynamic">여기서 보기</a>
+          <a href="./output/gusun_dynamic_network.html" target="_blank" rel="noopener">새 탭 ↗</a>
+        </div>
+      </li>
+      <li class="card">
+        <span class="tag">네트워크</span>
+        <h3>Temporal Multiplex Network</h3>
+        <p>상대 인물별 관계 타임라인(전체·1793 확대), 관계 layer를 켜고 끄는 multiplex 그래프, 시기별 관계 구성을 담았습니다.</p>
+        <div class="actions">
+          <a href="./output/gusun_temporal_multiplex_network.html" target="viz" data-key="multiplex">여기서 보기</a>
+          <a href="./output/gusun_temporal_multiplex_network.html" target="_blank" rel="noopener">새 탭 ↗</a>
+        </div>
+      </li>
+    </ul>
+    <p class="note">이 시각화는 입력 CSV에 기록된 관계만 보여줍니다. 연결 수·중심성은 실제 영향력이 아니라 기록 보존량을 반영하며, 정책과 구순 사건이 같은 시기에 보이는 것은 인과관계를 뜻하지 않습니다.
+      자세한 방법과 검증 결과는 <a href="./output/gusun_temporal_network_README.md">분석 README (Markdown 원문)</a>에 있습니다.</p>
+  </section>
+
+  <footer class="site-footer">
+    정적 GitHub Pages 사이트 · 서버 없음 · <a href="./README.md">저장소 README</a>
+  </footer>
+
+  <script>
+    // 선택 표시와 '새 탭' 링크 갱신, #해시로 특정 시각화 바로 열기 (JS 없이도 링크는 동작)
+    (function () {
+      var frame = document.getElementById('viz');
+      var title = document.getElementById('current-title');
+      var openNew = document.getElementById('open-new');
+      var navLinks = document.querySelectorAll('.viz-nav a');
+      var byKey = {};
+      navLinks.forEach(function (a) { byKey[a.dataset.key] = a; });
+
+      function select(key, updateFrame) {
+        var a = byKey[key];
+        if (!a) return;
+        navLinks.forEach(function (n) { n.removeAttribute('aria-current'); });
+        a.setAttribute('aria-current', 'page');
+        title.textContent = a.textContent;
+        frame.title = a.textContent;
+        openNew.href = a.getAttribute('href');
+        if (updateFrame) frame.src = a.getAttribute('href');
+      }
+
+      document.querySelectorAll('a[target="viz"]').forEach(function (a) {
+        a.addEventListener('click', function () {
+          select(a.dataset.key, false);
+          if (history.replaceState) history.replaceState(null, '', '#' + a.dataset.key);
+          if (a.closest('.catalog')) frame.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      function fromHash() {
+        var key = (location.hash || '').slice(1);
+        if (key && byKey[key] && frame.getAttribute('src') !== byKey[key].getAttribute('href')) select(key, true);
+      }
+      window.addEventListener('hashchange', fromHash);
+      fromHash();
+    })();
+  </script>
+</body>
+</html>

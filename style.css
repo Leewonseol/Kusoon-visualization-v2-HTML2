@@ -1,0 +1,146 @@
+/* 구순 temporal network — 랜딩 페이지 스타일 (output/*.html 내부 스타일과 무관) */
+:root {
+  color-scheme: light;
+  --page: #f9f9f7;
+  --surface: #fcfcfb;
+  --ink: #0b0b0b;
+  --ink2: #52514e;
+  --muted: #898781;
+  --line: rgba(11, 11, 11, 0.12);
+  --accent: #2a78d6;
+  --accent-ink: #ffffff;
+  --note: #fff7f2;
+  --note-line: #eb6834;
+  --header-h: 0px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #0d0d0d;
+    --surface: #1a1a19;
+    --ink: #ffffff;
+    --ink2: #c3c2b7;
+    --muted: #898781;
+    --line: rgba(255, 255, 255, 0.12);
+    --accent: #3987e5;
+    --note: #2a201b;
+    --note-line: #d95926;
+  }
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  background: var(--page);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  line-height: 1.5;
+}
+
+/* ── 상단 헤더 + 내비게이션 ── */
+.site-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  padding: 10px 16px 0;
+}
+.brand { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
+.brand h1 { font-size: 1.15rem; margin: 0; }
+.brand p { margin: 0; font-size: 0.85rem; color: var(--ink2); }
+
+.viz-nav {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 10px 0;
+  scrollbar-width: thin;
+}
+.viz-nav a {
+  flex: 0 0 auto;
+  text-decoration: none;
+  color: var(--ink2);
+  border: 1px solid var(--line);
+  background: var(--page);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+.viz-nav a:hover { color: var(--ink); border-color: var(--ink2); }
+.viz-nav a[aria-current="page"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+
+/* ── 현재 보기 바 ── */
+.viewer-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 12px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  color: var(--ink2);
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+.viewer-bar strong { color: var(--ink); }
+.viewer-bar a { color: var(--accent); }
+
+/* ── iframe ── */
+.viewer { display: block; }
+.viewer iframe {
+  display: block;
+  width: 100%;
+  height: calc(100vh - 150px);
+  min-height: 520px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: #fcfcfb;
+}
+
+/* ── 카드 목록 ── */
+.catalog { padding: 24px 16px 40px; max-width: 1200px; width: 100%; margin: 0 auto; }
+.catalog h2 { font-size: 1.05rem; margin: 0 0 4px; }
+.catalog > p { margin: 0 0 14px; color: var(--ink2); font-size: 0.9rem; }
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.card h3 { font-size: 0.98rem; margin: 0; }
+.card p { margin: 0; font-size: 0.85rem; color: var(--ink2); flex: 1 1 auto; }
+.card .actions { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.85rem; }
+.card .actions a { color: var(--accent); }
+.card.primary { border-color: var(--accent); }
+.tag { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+
+.note {
+  margin: 18px 0 0;
+  border-left: 3px solid var(--note-line);
+  background: var(--note);
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  color: var(--ink2);
+}
+.site-footer { padding: 14px 16px 24px; font-size: 0.8rem; color: var(--muted); text-align: center; }
+.site-footer a { color: var(--accent); }
+
+@media (max-width: 640px) {
+  .brand p { display: none; }
+  .viewer iframe { height: calc(100vh - 130px); min-height: 480px; }
+}
