@@ -301,4 +301,96 @@ CSV 작성자의 평가(`identity_bridge_status` = `highly_probable_not_fully_pr
 (c) 1793 '전 부사'의 府名이다. 반대로 같은 시기에 다른 具純이 다른 장소에 있었다는 기록이 나오면 두 세그먼트는 이미 분리돼 있으므로
 L00만 CONTRADICTED로 바꾸면 된다.
 """
+    if "rank" in res:
+        txt += rank_section(res)
     (OUT / "gusun_temporal_network_README.md").write_text(txt, encoding="utf-8")
+
+
+def rank_section(res: dict) -> str:
+    rk = res["rank"]
+    J, audit, val, lk = rk["joined"], rk["audit"], rk["rank_val"], rk["lookup"]
+    g = J[J.focal_person_id.isin(gp.EGO)]
+    gm = g[g.office_lookup_match_status.isin(["EXACT", "NORMALIZED"])]
+    summ = (gm.groupby(["focal_raw_office_status", "normalized_office_title", "statutory_rank", "rank_numeric",
+                        "rank_fixedness", "rank_lane", "administrative_scope", "office_lookup_verification_status"],
+                       dropna=False)
+              .agg(n_rows=("event_id", "size"), first=("date_lunar", "min")).reset_index()
+              .sort_values("first"))
+    summ["former_statutory_rank"] = summ.focal_raw_office_status.map(
+        lk.set_index("raw_office_status").former_statutory_rank)
+    counts = audit[audit.match_status != "LOOKUP_UNUSED"].groupby("match_status").agg(
+        distinct_values=("raw_office_status", "size"), occurrences=("n_occurrences", "sum")).reset_index()
+    unm = audit[audit.match_status == "UNMATCHED"]
+    cand = unm[unm.unmatched_kind == "POSSIBLE_OFFICE_NOT_IN_LOOKUP"]
+    n_lk_used = int((audit.match_status.isin(["EXACT", "NORMALIZED"])).sum())
+    cmp_ = rk["scope_cmp"]
+    return f"""
+
+---
+
+## 8. 관직 법정 품계 lookup 결합 (`office_rank_lookup.csv`)
+
+> **lookup의 품계는 관직 자체의 법정·제도적 품계다. 구순 개인의 실제 품계(personal_rank)가 아니다.**
+> CSV에서 개인 품계로 읽히는 것은 E002의 '당상관'(노상추일기 전언) 하나뿐이며 `personal_rank`에 따로 보존했다.
+> `rank_numeric`(정3품=3.0, 종3품=3.5, 정4품=4.0, 종4품=4.5 …)은 **시각화 Y축 정렬용**이고 권력 점수·사회적 영향력·개인 품계가 아니다.
+
+### 8.1 입력과 조인 규칙
+
+- lookup: `{rk['lookup_path'].relative_to(gp.ROOT)}` ({len(lk)}행 × {lk.shape[1] - 1}열). 원본 두 CSV는 수정하지 않았다.
+  lookup의 `source_url_1/2`(한국민족문화대백과사전·실록·승정원일기·우리역사넷)는 메타데이터로만 보존했고 접속하지 않았다.
+  lookup의 품계 판정·`verification_status`는 lookup 작성자의 판단이며, 이 작업에서 독립적으로 재검증하지 않았다.
+- 조인 키: master의 `subject_office_status`와 `object_office_status`를 각각 lookup의 `raw_office_status`에 **LEFT JOIN**한다.
+  master에는 직함 전용 필드가 없고 이 두 필드가 직함·신분·역할을 담고 있으며, lookup 키 {len(lk)}개가 전부 이 두 필드의 값과 문자 단위로 같다.
+- 매칭 순서: **EXACT**(문자열 완전 일치) → **NORMALIZED**(유니코드 NFKC + 공백 정리만, 정규화 후에도 키가 유일할 때) → **UNMATCHED**.
+  부분 문자열·유사도 기반 fuzzy 매칭은 구현하지 않았다.
+- 요청된 파생 컬럼(`normalized_office_title`, `office_title_hanja`, `record_type`, `administrative_scope`, `statutory_rank`,
+  `rank_numeric`, `rank_fixedness`, `rank_visualizable`, `former_statutory_rank`, `office_lookup_match_status`,
+  `office_lookup_verification_status`)은 각 행의 **focal 인물**(구순이 있으면 구순 쪽, 없으면 subject)을 기준으로 채웠다.
+  subject·object 양쪽의 결과는 `subject_*`, `object_*` 접두사 컬럼으로 모두 남겼다.
+- 앞 단계의 관직명 규칙 결과는 `rule_scope_v1`로 남겼다. lookup의 scope와 충돌하는 곳은 없고, lookup 쪽이 더 세분된다
+  (예: 별군직 COURT → COURT_MILITARY, 영흥부사·겸영장 LOCAL → LOCAL_MILITARY, 백령첨사 MILITARY → MILITARY_LOCAL).
+
+### 8.2 매칭 결과
+
+{md_table(counts, ['match_status', 'distinct_values', 'occurrences'], 10)}
+
+- lookup {len(lk)}행 중 {n_lk_used}행이 사용됐다 (미사용 {len(lk) - n_lk_used}행).
+- NORMALIZED가 0건인 것은 정상이다: 모든 직함이 원문 그대로 일치했다.
+- UNMATCHED {len(unm)}개 고유값은 대부분 관직이 아니다 (국왕·정부 같은 통치자·기관, 민간인·가내, 죄인·정배 같은 처벌 상태, 정책·사건 노드).
+  **직함처럼 보이지만 lookup에 키가 없는 값** {len(cand)}개는 결합하지 않고 lookup 추가 후보로만 표시했다:
+  {', '.join(f"'{v}'" for v in cand.raw_office_status)}. 예를 들어 '체포 장교'는 lookup의 '청주진 장교'와 단어가 겹치지만
+  같은 직함이라고 단정할 근거가 없어 자동 결합하지 않았다.
+- 전체 목록: `gusun_office_lookup_join_audit.csv`.
+
+### 8.3 구순 직함별 결합 결과
+
+{md_table(summ, ['first', 'focal_raw_office_status', 'normalized_office_title', 'statutory_rank', 'rank_numeric', 'rank_fixedness', 'rank_lane', 'former_statutory_rank', 'office_lookup_verification_status', 'n_rows'], 30)}
+
+- **고정 품계(FIXED)**: 중화부사→도호부사 종3품, 벽동군수→군수 종4품, 백령첨사→첨사(첨절제사) 종3품(DERIVED_CONFIRMED),
+  영흥부사·영흥부사·겸영장→대도호부사 정3품. 이 관직들만 수치축에 들어간다.
+- **가변(VARIABLE)**: 선전관, 별군직, 선전관→별군직, 선전관/별군직 계열은 `rank_numeric`이 비어 있고
+  `COURT_MILITARY_VARIABLE` lane에 놓인다. 구순이 별군직일 때의 개인 품계는 이 lookup으로 정할 수 없다.
+- **전직(FORMER_OFFICE)**: 1793년 '전 부사', '전 부사·민간 거주', '전 부사·청주 덕평 거주'는 `career_state=FORMER_OFFICIAL`,
+  현재 `rank_numeric` = 빈 값, `former_statutory_rank` = '정3품 또는 종3품(부의 종류에 따라 다름)'. 1793 기록에 府名이 없어서
+  어느 쪽인지 정할 수 없다 — 이 미확정성은 동일인 판단(L08의 FORMER_OFFICE_TITLE_MATCH)에도 그대로 남는다.
+  같은 규칙으로 이광섭('전 충청도 병마절도사', 종2품)과 이문협('전 청주 영장', 정3품)도 현재 품계 없이 전직 품계만 보존했다.
+- **처벌·조사 상태**(죄인, 정배, 의금부 피수사자 등)는 lookup에 없고 관직이 아니므로 UNMATCHED로 남고, `career_state` band로만 그린다.
+- 구순 경력선 해석상 주의: 1778 중화부사(종3품) → 1779 벽동군수(종4품) → 1781 백령첨사(종3품) → 1782 영흥부사(정3품)의
+  위아래 움직임은 **관직 자체의 법정 품계 변화**이고, 구순의 개인 품계가 오르내렸다는 증거가 아니다.
+
+### 8.4 자동 검증 (`gusun_office_rank_validation.csv`)
+
+{md_table(val, ['check_no', 'check', 'result', 'detail'], 10)}
+
+### 8.5 산출물
+
+| 파일 | 내용 |
+|---|---|
+| `gusun_temporal_network_with_office_rank.csv` | master {len(J)}행 전체 + lookup 파생 컬럼 (행 수 불변) |
+| `gusun_office_lookup_join_audit.csv` | 고유 직함 값별 매칭 상태·근거·조치 |
+| `gusun_office_rank_validation.csv` | 위 7개 검사 |
+| `gusun_temporal_career_with_rank.html` | ① 고정 품계 수치축 ② 가변 직함 category lane ③ career_state band. 다른 인물의 직함은 범례 클릭으로 표시 |
+| `intermediate/09_office_scope_rule_vs_lookup.csv` | 앞 단계 규칙 scope와 lookup scope 비교 |
+
+기존 산출물(`gusun_temporal_career.html` 등)은 그대로 보존했다.
+"""

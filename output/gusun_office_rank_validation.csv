@@ -1,0 +1,8 @@
+﻿check_no,check,result,detail
+1,FIXED인데 rank_numeric이 없는 행,PASS,lookup FIXED 12행 모두 값 있음
+2,VARIABLE/비고정인데 rank_numeric이 들어간 행,PASS,"비고정 lookup 16행 (FORMER_OFFICE, NO_SINGLE_STATUTORY_RANK, UNRANKED_CLERICAL, VARIABLE) 모두 빈 값"
+3,FORMER_OFFICIAL인데 현재 rank_numeric이 들어간 행,PASS,FORMER_OFFICIAL 행 14개 모두 rank_numeric 비움 (former_statutory_rank만 보존)
+4,동일 raw_office_status가 서로 다른 fixed rank로 중복 매핑,PASS,lookup 키 28개 모두 유일 (정규화 후에도 유일)
+5,unmatched office status (보고 항목),REPORTED,"고유값 48개 / 출현 113회; 성격 {'RULER_OR_INSTITUTION': 46, 'NON_OFFICE_PERSON_OR_HOUSEHOLD': 33, 'PENAL_OR_CAREER_STATE': 17, 'POLICY_EVENT_OR_LIST': 12, 'POSSIBLE_OFFICE_NOT_IN_LOOKUP': 5}; lookup 추가 후보(직함처럼 보이나 키 없음): ['별군직 청수 관련', '병영·진영 실무자', '영흥부 아전', '중영 하급 실무자', '체포 장교']"
+6,join 후 temporal network 원본 행 수 불변,PASS,"원본 102행 → 결합 102행, event_id 순서 동일=True"
+7,fuzzy merge가 발생하지 않음,PASS,"EXACT 87회·NORMALIZED 0회 모두 문자열 동일성으로 재확인; 부분 문자열이 겹치지만 결합하지 않은 값: ['별군직 청수 관련', '병영·진영 실무자', '중영 하급 실무자', '체포 장교']"

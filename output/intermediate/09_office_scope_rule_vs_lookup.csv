@@ -1,0 +1,13 @@
+﻿focal_raw_office_status,rule_scope_v1,administrative_scope,n_rows
+백령첨사,MILITARY,MILITARY_LOCAL,1
+벽동군수,LOCAL,LOCAL,1
+별군직,COURT,COURT_MILITARY,6
+선전관,COURT,COURT_MILITARY,1
+선전관/별군직 계열,UNKNOWN,COURT_MILITARY,1
+선전관→별군직,COURT,COURT_MILITARY,1
+영흥부사,LOCAL,LOCAL,9
+영흥부사·겸영장,LOCAL,LOCAL_MILITARY,1
+전 부사,NONE,FORMER_OFFICIAL,5
+전 부사·민간 거주,NONE,FORMER_OFFICIAL,8
+전 부사·청주 덕평 거주,NONE,FORMER_OFFICIAL,2
+중화부사,LOCAL,LOCAL,1

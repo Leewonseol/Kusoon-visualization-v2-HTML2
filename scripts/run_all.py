@@ -23,11 +23,18 @@ import gusun_pipeline as gp  # noqa: E402
 
 if __name__ == "__main__":
     res = gp.run(NET_ATTEMPTS)
+    import gusun_office_rank as gor
+    rk = gor.build(res)
+    gor.write(rk)
+    res["rank"] = rk
     if "--data-only" not in sys.argv:
         import gusun_viz as gv
         gv.build_all(res)
+        import gusun_viz_rank as gvr
+        gvr.build(res, rk)
         import gusun_readme as gr
         gr.write_readme(res, NET_ATTEMPTS)
     print(res["val"].to_string(index=False))
-    if (res["val"].result != "PASS").any():
+    print(rk["rank_val"].to_string(index=False))
+    if (res["val"].result != "PASS").any() or (rk["rank_val"].result == "FAIL").any():
         sys.exit(1)

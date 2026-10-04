@@ -1,0 +1,77 @@
+﻿raw_office_status,match_status,matched_lookup_key,n_occurrences,sides,event_ids,lookup_row_number,normalized_office_title,statutory_rank,rank_numeric,rank_fixedness,former_statutory_rank,verification_status,unmatched_kind,action,fuzzy_used
+병영 비장,EXACT,병영 비장,11,object;subject,E031;E032;E039;E040;E041;E042;E043;E044;E057;E061;E068,20.0,비장,비고정/별도 품계 없음,,NO_SINGLE_STATUTORY_RANK,,CONFIRMED_ROLE_ONLY,NA,JOINED,False
+영흥부사,EXACT,영흥부사,9,object;subject,E006;E007;E009;E010;E011;E012;E013;E014;E016,6.0,대도호부사,정3품,3.0,FIXED,,CONFIRMED,NA,JOINED,False
+별군직,EXACT,별군직,8,object;subject,E004;E017;E019;E020;E021;E022,17.0,별군직,비고정,,VARIABLE,,CONFIRMED_VARIABLE,NA,JOINED,False
+병영 영리,EXACT,병영 영리,8,object;subject,E038;E039;E070;E071;E072;E073;E074;E075,23.0,영리,품계 없음,,UNRANKED_CLERICAL,,CONFIRMED_UNRANKED,NA,JOINED,False
+전 부사·민간 거주,EXACT,전 부사·민간 거주,8,object;subject,E029;E030;E034;E037;E038;E050;E051;E055,25.0,전 부사,현재 품계 없음,,FORMER_OFFICE,정3품 또는 종3품(부의 종류에 따라 다름),CONFIRMED_STATE,NA,JOINED,False
+전 부사,EXACT,전 부사,5,object;subject,E061;E063;E084;E085;E086,24.0,전 부사,현재 품계 없음,,FORMER_OFFICE,정3품 또는 종3품(부의 종류에 따라 다름),CONFIRMED_STATE,NA,JOINED,False
+충청도 관찰사,EXACT,충청도 관찰사,5,object;subject,E050;E051;E052;E053;E069,12.0,관찰사,종2품,2.5,FIXED,,CONFIRMED,NA,JOINED,False
+청주진 장교,EXACT,청주진 장교,4,object;subject,E031;E032;E033;E034,21.0,장교,비고정,,NO_SINGLE_STATUTORY_RANK,,CONFIRMED_ROLE_ONLY,NA,JOINED,False
+충청도 병마절도사,EXACT,충청도 병마절도사,4,object;subject,E035;E036;E053;E054,11.0,병마절도사,종2품,2.5,FIXED,,CONFIRMED,NA,JOINED,False
+충청도 암행어사,EXACT,충청도 암행어사,3,object;subject,E056;E057;E058,18.0,암행어사,비고정(당하관에서 차출),,VARIABLE,,CONFIRMED_VARIABLE,NA,JOINED,False
+전 부사·청주 덕평 거주,EXACT,전 부사·청주 덕평 거주,2,object,E026;E027,26.0,전 부사,현재 품계 없음,,FORMER_OFFICE,정3품 또는 종3품(부의 종류에 따라 다름),CONFIRMED_STATE,NA,JOINED,False
+전 충청도 병마절도사,EXACT,전 충청도 병마절도사,2,subject,E063;E064,27.0,병마절도사,현재 품계 없음,,FORMER_OFFICE,종2품,CONFIRMED_STATE,NA,JOINED,False
+함경중군,EXACT,함경중군,2,object;subject,E008;E009,9.0,함경감영중군,정3품,3.0,FIXED,,CONFIRMED,NA,JOINED,False
+호서 안핵어사,EXACT,호서 안핵어사,2,subject,E060;E062,19.0,안핵어사,비고정,,VARIABLE,,CONFIRMED_ROLE_ONLY,NA,JOINED,False
+개천군수,EXACT,개천군수,1,subject,I002,2.0,군수,종4품,4.5,FIXED,,CONFIRMED,NA,JOINED,False
+교졸/장교,EXACT,교졸/장교,1,object,E030,22.0,교졸/장교,비고정,,NO_SINGLE_STATUTORY_RANK,,CONFIRMED_ROLE_ONLY,NA,JOINED,False
+무산부사,EXACT,무산부사,1,subject,I003,5.0,부사,종3품,3.5,FIXED,,DERIVED_CONFIRMED,NA,JOINED,False
+백령첨사,EXACT,백령첨사,1,object,I004,8.0,첨사(첨절제사),종3품,3.5,FIXED,,DERIVED_CONFIRMED,NA,JOINED,False
+벽동군수,EXACT,벽동군수,1,object,E005,3.0,군수,종4품,4.5,FIXED,,CONFIRMED,NA,JOINED,False
+선전관,EXACT,선전관,1,subject,E002,14.0,선전관,가변,,VARIABLE,,CONFIRMED_VARIABLE,NA,JOINED,False
+선전관/별군직 계열,EXACT,선전관/별군직 계열,1,object,I003,15.0,선전관/별군직 계열,가변,,VARIABLE,,AMBIGUOUS,NA,JOINED,False
+선전관→별군직,EXACT,선전관→별군직,1,object,E001,16.0,선전관→별군직,가변,,VARIABLE,,CONFIRMED_VARIABLE,NA,JOINED,False
+영흥부사·겸영장,EXACT,영흥부사·겸영장,1,object,E015,7.0,대도호부사+겸영장,정3품,3.0,FIXED,,CONFIRMED,NA,JOINED,False
+전 병마절도사,EXACT,전 병마절도사,1,object,E067,28.0,병마절도사,현재 품계 없음,,FORMER_OFFICE,종2품,CONFIRMED_STATE,NA,JOINED,False
+전 청주 영장,EXACT,전 청주 영장,1,subject,E065,29.0,진영장(영장),현재 품계 없음,,FORMER_OFFICE,정3품,CONFIRMED_STATE,NA,JOINED,False
+중화부사,EXACT,중화부사,1,object,E003,4.0,도호부사,종3품,3.5,FIXED,,CONFIRMED,NA,JOINED,False
+청주 영장,EXACT,청주 영장,1,object,E052,10.0,진영장(영장),정3품,3.0,FIXED,,CONFIRMED,NA,JOINED,False
+황해감사,EXACT,황해감사,1,subject,E080,13.0,관찰사(감사),종2품,2.5,FIXED,,CONFIRMED,NA,JOINED,False
+국왕,UNMATCHED,NA,25,object;subject,C001;C002;C004;C005;C006;C012;C014;C017;E001;E007;E016;E017;E023;E024;E055;E058;E059;E066;E067;E068;E069;E076;E077;E082;I004,,,,,,,,RULER_OR_INSTITUTION,결합 대상 아님 (관직 아님),False
+민간인,UNMATCHED,NA,12,object,E036;E045;E046;E047;E048;E049;E070;E071;E072;E073;E074;E075,,,,,,,,NON_OFFICE_PERSON_OR_HOUSEHOLD,결합 대상 아님 (관직 아님),False
+피체포 민간인,UNMATCHED,NA,10,object;subject,E040;E041;E042;E043;E044;E045;E046;E047;E048;E049,,,,,,,,NON_OFFICE_PERSON_OR_HOUSEHOLD,결합 대상 아님 (관직 아님),False
+정부,UNMATCHED,NA,5,subject,C003;C010;C013;C015;C016,,,,,,,,RULER_OR_INSTITUTION,결합 대상 아님 (관직 아님),False
+중앙 관서,UNMATCHED,NA,5,subject,C007;E012;E013;E014;E054,,,,,,,,RULER_OR_INSTITUTION,결합 대상 아님 (관직 아님),False
+대외 상대국,UNMATCHED,NA,3,object,C003;C010;C015,,,,,,,,RULER_OR_INSTITUTION,결합 대상 아님 (관직 아님),False
+인사권자/관청,UNMATCHED,NA,3,subject,E003;E005;E006,,,,,,,,RULER_OR_INSTITUTION,결합 대상 아님 (관직 아님),False
+죄인,UNMATCHED,NA,3,object,E023;E024;E066,,,,,,,,PENAL_OR_CAREER_STATE,결합 대상 아님 (관직 아님),False
+중앙 사법기관,UNMATCHED,NA,3,subject,E011;E015;E081,,,,,,,,RULER_OR_INSTITUTION,결합 대상 아님 (관직 아님),False
+국가 성역,UNMATCHED,NA,2,object,C013;C016,,,,,,,,RULER_OR_INSTITUTION,결합 대상 아님 (관직 아님),False
+반족·구순 이웃,UNMATCHED,NA,2,subject,E026;E027,,,,,,,,NON_OFFICE_PERSON_OR_HOUSEHOLD,결합 대상 아님 (관직 아님),False
+의금부 피수사자,UNMATCHED,NA,2,object,E056;E059,,,,,,,,PENAL_OR_CAREER_STATE,결합 대상 아님 (관직 아님),False
+장연현 도3년 정배죄인,UNMATCHED,NA,2,object,E080;E081,,,,,,,,PENAL_OR_CAREER_STATE,결합 대상 아님 (관직 아님),False
+피수사자,UNMATCHED,NA,2,object,E060;E064,,,,,,,,PENAL_OR_CAREER_STATE,결합 대상 아님 (관직 아님),False
+검험·법의 지침,UNMATCHED,NA,1,object,C014,,,,,,,,POLICY_EVENT_OR_LIST,결합 대상 아님 (관직 아님),False
+구순 집 종,UNMATCHED,NA,1,subject,E028,,,,,,,,NON_OFFICE_PERSON_OR_HOUSEHOLD,결합 대상 아님 (관직 아님),False
+구순 집 하인 집단,UNMATCHED,NA,1,object,E085,,,,,,,,NON_OFFICE_PERSON_OR_HOUSEHOLD,결합 대상 아님 (관직 아님),False
+구순의 종형,UNMATCHED,NA,1,object,E021,,,,,,,,NON_OFFICE_PERSON_OR_HOUSEHOLD,결합 대상 아님 (관직 아님),False
+군역·지방행정 정책,UNMATCHED,NA,1,object,C002,,,,,,,,POLICY_EVENT_OR_LIST,결합 대상 아님 (관직 아님),False
+군제·훈련 지침,UNMATCHED,NA,1,object,C006,,,,,,,,POLICY_EVENT_OR_LIST,결합 대상 아님 (관직 아님),False
+문신 교육·인사,UNMATCHED,NA,1,object,C004,,,,,,,,POLICY_EVENT_OR_LIST,결합 대상 아님 (관직 아님),False
+민간인 집단,UNMATCHED,NA,1,object,E065,,,,,,,,NON_OFFICE_PERSON_OR_HOUSEHOLD,결합 대상 아님 (관직 아님),False
+반족·민간인,UNMATCHED,NA,1,object,E035,,,,,,,,NON_OFFICE_PERSON_OR_HOUSEHOLD,결합 대상 아님 (관직 아님),False
+변재돌의 처,UNMATCHED,NA,1,object,E033,,,,,,,,NON_OFFICE_PERSON_OR_HOUSEHOLD,결합 대상 아님 (관직 아님),False
+별군직 청수 관련,UNMATCHED,NA,1,object,E022,,,,,,,,POSSIBLE_OFFICE_NOT_IN_LOOKUP,LOOKUP 추가 후보 — 자동 fuzzy 매칭하지 않음,False
+병영·진영 실무자,UNMATCHED,NA,1,object,E086,,,,,,,,POSSIBLE_OFFICE_NOT_IN_LOOKUP,LOOKUP 추가 후보 — 자동 fuzzy 매칭하지 않음,False
+사건,UNMATCHED,NA,1,object,E029,,,,,,,,POLICY_EVENT_OR_LIST,결합 대상 아님 (관직 아님),False
+사노·구순 여종의 남편,UNMATCHED,NA,1,object,E028,,,,,,,,NON_OFFICE_PERSON_OR_HOUSEHOLD,결합 대상 아님 (관직 아님),False
+사업 기록·표준화,UNMATCHED,NA,1,object,C017,,,,,,,,POLICY_EVENT_OR_LIST,결합 대상 아님 (관직 아님),False
+석방 후 민간 상태 추정,UNMATCHED,NA,1,subject,E083,,,,,,,,PENAL_OR_CAREER_STATE,결합 대상 아님 (관직 아님),False
+수감자,UNMATCHED,NA,1,object,E062,,,,,,,,PENAL_OR_CAREER_STATE,결합 대상 아님 (관직 아님),False
+신지도 정배죄인,UNMATCHED,NA,1,object,E076,,,,,,,,PENAL_OR_CAREER_STATE,결합 대상 아님 (관직 아님),False
+아들(후대 관계자료와 결합),UNMATCHED,NA,1,object,I002,,,,,,,,NON_OFFICE_PERSON_OR_HOUSEHOLD,결합 대상 아님 (관직 아님),False
+여도 정배/노비 처분 상태,UNMATCHED,NA,1,object,E077,,,,,,,,PENAL_OR_CAREER_STATE,결합 대상 아님 (관직 아님),False
+영흥부 아전,UNMATCHED,NA,1,object,E008,,,,,,,,POSSIBLE_OFFICE_NOT_IN_LOOKUP,LOOKUP 추가 후보 — 자동 fuzzy 매칭하지 않음,False
+왕실 무예시험,UNMATCHED,NA,1,object,E002,,,,,,,,POLICY_EVENT_OR_LIST,결합 대상 아님 (관직 아님),False
+왕실 수행 체계,UNMATCHED,NA,1,object,E004,,,,,,,,POLICY_EVENT_OR_LIST,결합 대상 아님 (관직 아님),False
+이웃 반족,UNMATCHED,NA,1,object,E084,,,,,,,,NON_OFFICE_PERSON_OR_HOUSEHOLD,결합 대상 아님 (관직 아님),False
+장연현 정배,UNMATCHED,NA,1,subject,E079,,,,,,,,PENAL_OR_CAREER_STATE,결합 대상 아님 (관직 아님),False
+정배 상태,UNMATCHED,NA,1,subject,E018,,,,,,,,PENAL_OR_CAREER_STATE,결합 대상 아님 (관직 아님),False
+제주목 감사정배,UNMATCHED,NA,1,subject,E025,,,,,,,,PENAL_OR_CAREER_STATE,결합 대상 아님 (관직 아님),False
+중영 하급 실무자,UNMATCHED,NA,1,object,E010,,,,,,,,POSSIBLE_OFFICE_NOT_IN_LOOKUP,LOOKUP 추가 후보 — 자동 fuzzy 매칭하지 않음,False
+지방·군사 행정,UNMATCHED,NA,1,object,C012,,,,,,,,POLICY_EVENT_OR_LIST,결합 대상 아님 (관직 아님),False
+체포 장교,UNMATCHED,NA,1,object,E037,,,,,,,,POSSIBLE_OFFICE_NOT_IN_LOOKUP,LOOKUP 추가 후보 — 자동 fuzzy 매칭하지 않음,False
+통합 법전,UNMATCHED,NA,1,object,C005,,,,,,,,POLICY_EVENT_OR_LIST,결합 대상 아님 (관직 아님),False
+형기 만료 죄인,UNMATCHED,NA,1,object,E082,,,,,,,,PENAL_OR_CAREER_STATE,결합 대상 아님 (관직 아님),False
+형사절차 규정,UNMATCHED,NA,1,object,C007,,,,,,,,POLICY_EVENT_OR_LIST,결합 대상 아님 (관직 아님),False
+형정 규정,UNMATCHED,NA,1,object,C001,,,,,,,,POLICY_EVENT_OR_LIST,결합 대상 아님 (관직 아님),False
