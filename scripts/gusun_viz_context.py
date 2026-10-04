@@ -513,7 +513,6 @@ def build(res, rk, pc):
     fig = dashboard(res, rk, pc)
     plot_html = fig.to_html(full_html=False, include_plotlyjs=True, auto_play=False,
                             config={"responsive": True, "displaylogo": False})
-    sym_rows = "".join(f"<tr><td>{k}</td><td>{v}</td></tr>" for k, v in KIND_SYMBOL.items())
     intro = f"""
 <p class="note"><b>세 층은 독립된 데이터 layer입니다.</b> A·B = 구순 개인 기록(gusun_temporal_network_master),
 A의 품계 = 관직 자체의 법정 품계(office_rank_lookup; 개인 품계 아님), C = 정조대 정책(jeongjo_policy_timeline).
@@ -531,8 +530,6 @@ A의 품계 = 관직 자체의 법정 품계(office_rank_lookup; 개인 품계 �
 <div class="dash"><div class="card">{plot_html}</div>
 <aside id="panelD"><p class="muted">그래프를 클릭하세요.</p></aside></div>
 <p><label>구순 사건 바로 선택: <select id="pickEvent">{options}</select></label></p>
-<h2>정책 기호 (event_kind → marker)</h2>
-<div class="card"><table><thead><tr><th>event_kind</th><th>plotly symbol</th></tr></thead><tbody>{sym_rows}</tbody></table></div>
 {js}"""
     page = gv.page("구순 Temporal Context Dashboard", intro, [], "")
     page = page.replace("</main>", body + "</main>")
@@ -550,10 +547,7 @@ A의 품계 = 관직 자체의 법정 품계(office_rank_lookup; 개인 품계 �
 아래 정책 줄은 <b>시대적 배경</b>일 뿐 이 경로의 일부가 아닙니다.</p>"""
     tail = ("<h2>1793년 신규 정책 milestone</h2>" +
             gv.df_table(new93, ["policy_event_id", "date_lunar", "broad_domain", "policy_title", "milestone",
-                                "project_relevance", "persistence_class", "verification_status"]) +
-            "<h2>ONGOING CONTEXT (1793 이전 성립 · CSV에 종료일 없음)</h2>" +
-            gv.df_table(ongoing, ["policy_event_id", "date_lunar", "broad_domain", "policy_title", "event_kind",
-                                  "project_relevance", "context_end_date"]))
+                                "project_relevance", "persistence_class", "verification_status"]))
     body_z = f"""{PANEL_CSS}
 <div class="dash"><div class="card">{zplot}</div>
 <aside id="panelD"><p class="muted">그래프를 클릭하세요.</p></aside></div>{tail}{js}"""
